@@ -63,6 +63,7 @@ window.addEventListener('mousedown', () => {
 });
 window.addEventListener('mouseup', () => mouseclicked = false);
 
+
 window.addEventListener('mousemove', (e) => {
   if(!mouseclicked) return;
 
