@@ -3,7 +3,7 @@ import * as THREE from 'three'
 
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-scene.background = new THREE.Color('#ffffff') 
+scene.background = new THREE.Color('#000000') 
 
 const renderer = new THREE.WebGLRenderer()
 renderer.setSize(window.innerWidth, window.innerHeight)
@@ -17,7 +17,8 @@ scene.add(cube)
 
 const ambient = new THREE.AmbientLight(0xFFFFFF, 0.5)
 
-const light = new THREE.SpotLight(0xFFFFFF, 1, 10, 200)
+const light = new THREE.SpotLight(0xFFFFFF, 1, 90, 200)
+
 scene.add(light)
 scene.add(ambient)
 
@@ -48,6 +49,7 @@ function animate() {
 	cube.rotation.x += 0.01;
 	cube.rotation.y += 0.01;
 
+  
 
   cube.rotation 
 

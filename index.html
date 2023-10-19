@@ -17,7 +17,11 @@
     }
   </script>
 
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="projects.css">
 
 </head>
 
@@ -30,6 +34,8 @@
       $template: '#project-template',
       name: props.name,
       desc: props.desc,
+      imgsrc: `./images/${props.image}.png`,
+      color: props.color,
     }
   }
 
@@ -37,6 +43,8 @@
   createApp({
     currentTab: "home",
     switchTab(tab) {
+      document.title = `AchoDev - ${tab}`
+      
       this.currentTab = tab;
     },
 
@@ -71,11 +79,11 @@
   </nav>
 
 
-  <div id="home" v-show="currentTab === 'home'">
+  <div id="home" class="page" v-show="currentTab === 'home'">
     
   </div>
 
-  <div id="about" v-show="currentTab === 'about'">
+  <div id="about" class ="page" v-show="currentTab === 'about'">
     about
     about
     about
@@ -87,21 +95,99 @@
     about    
   </div>
 
-  <div id="projects" v-show="currentTab === 'projects'">
+  <div id="projects" class="page" v-show="currentTab === 'projects'">
 
     <h1>Projects</h1>
 
     <template id="project-template">
-      <div class="project">
-        {{name}}
-        {{desc}}
+      
+      <div class="project" :style="`background: ${color}`">
+
+        <div class="darkener">
+          &nbsp;
+        </div>
+        
+        <img :src=imgsrc alt="AmA Logo">
+
+        <div class="name">
+          <span :style="`background: ${color}`">
+            {{ name }}
+          </span>
+        </div>
+        <div class="overlay">
+          {{desc}}
+        </div>
       </div>
     </template>
 
-    <div v-scope="Project({
-      name: 'AmA', 
-      desc: 'AmA is one of the programs of all time'
-    })"></div>
+    <div id="wrapper">
+
+      <div v-scope="Project({
+        name: 'AmA', 
+        desc: 'AmA is one of the programs of all time',
+        image: 'ama',
+        color: 'orange',
+      })"></div>
+  
+      <div v-scope="Project({
+        name: 'Ultra TicTacToe', 
+        desc: 'Best game ever',
+        image: 'uttt',
+        color: 'royalblue',
+      })"></div>
+  
+  
+      <div v-scope="Project({
+        name: 'Kang2', 
+        desc: 'Best programming language',
+        image: 'kang2',
+        color: 'linear-gradient(0.9turn, rgb(255, 115, 0), red)',
+      })"></div>
+
+      <div v-scope="Project({
+        name: 'YOURanimelist', 
+        desc: 'list',
+        image: 'kang2',
+        color: 'linear-gradient(0.9turn, rgb(255, 115, 0), red)',
+      })"></div>
+
+      <div v-scope="Project({
+        name: 'Lumina Engine', 
+        desc: 'pygame engine',
+        image: 'kang2',
+        color: 'linear-gradient(0.9turn, rgb(255, 115, 0), red)',
+      })"></div>
+
+
+      <div v-scope="Project({
+        name: 'AchoMatico-Launcher', 
+        desc: 'launcher',
+        image: 'kang2',
+        color: 'linear-gradient(0.9turn, rgb(255, 115, 0), red)',
+      })"></div>
+
+      <div v-scope="Project({
+        name: 'Yo-Masta-Nag', 
+        desc: 'pygame game',
+        image: 'kang2',
+        color: 'linear-gradient(0.9turn, rgb(255, 115, 0), red)',
+      })"></div>
+
+      <div v-scope="Project({
+        name: 'Banana World', 
+        desc: 'unity game',
+        image: 'kang2',
+        color: 'linear-gradient(0.9turn, rgb(255, 115, 0), red)',
+      })"></div>
+
+      <div v-scope="Project({
+        name: 'Painter Super Yacht Finishing', 
+        desc: 'website',
+        image: 'kang2',
+        color: 'white',
+      })"></div>
+    </div>
+
   </div>
 
   <div id="contact" v-show="currentTab === 'contact'">
@@ -123,6 +209,8 @@
     width: 100%;
 
     height: 75px;
+
+    /* background-color: rgb(255, 115, 0); */
   }
 
   ul {
@@ -147,6 +235,7 @@
     margin: 0 10px 0 10px;
 
     transition: ease-out .2s;
+    color: white;
   }
 
   nav button:hover {
@@ -155,29 +244,28 @@
   }
 
   body {
+    height: 100%;
+    width: 100%;
     overflow-x: hidden;
+    position: relative;
+    background: linear-gradient(
+      10deg,
+      rgb(12, 21, 53),
+      rgb(24, 9, 29),
+      rgb(48, 7, 7)
+  
+    );
+
+    font-family: 'Nunito', sans-serif;
+
+    color: white;
   }
 
-  #projects {
-    height: 100vh;
-    width: 100vw;
-
-    flex-direction: column;
-
-    display: flex;
-    align-items: center;
-  }
-
-  .project {
-    width: 400px;
-    background: orange;
-  }
+  
 
   #home {
     height: 100vh;
-    width: 100vw;
-    background: rgb(0, 0, 0);
-  
+    width: 100vw;  
     display: grid;
     place-items: center;
   }
@@ -186,7 +274,7 @@
   #home canvas {
     width: auto !important;
     height: 100vh !important;
-    aspect-ratio: 16 / 9;
+    /* aspect-ratio: 16 / 9; */
   }
 
 </style>
