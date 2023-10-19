@@ -7,7 +7,7 @@ scene.background = new THREE.Color('#ffffff')
 
 const renderer = new THREE.WebGLRenderer()
 renderer.setSize(window.innerWidth, window.innerHeight)
-document.body.appendChild(renderer.domElement)
+document.getElementById('home').appendChild(renderer.domElement)
 
 const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshLambertMaterial({color: 0x00ff00})
