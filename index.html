@@ -80,6 +80,32 @@
 
 
   <div id="home" class="page" v-show="currentTab === 'home'">
+
+    <div style="position: absolute; bottom: 0;">
+      <button id="frontbutton"> X </button>
+      <button id="leftbutton"> < </button>
+      <button id="upbutton"> ^ </button>
+      <button id="downbutton"> v </button>
+      <button id="rightbutton"> > </button>
+      <button id="backbutton"> O </button>
+
+
+      <button id="printbutton"> print </button>
+      <button id="togglebutton"> toggle </button>
+    </div>
+
+    <div style="position: absolute; bottom: 40px;">
+      <button id="turnfrontbutton"> -| </button>
+      <button id="turnleftbutton"> < </button>
+      <button id="turnupbutton"> ^ </button>
+      <button id="turndownbutton"> v </button>
+      <button id="turnrightbutton"> > </button>
+      <button id="turnbackbutton"> |- </button>
+    </div>
+
+    <div style="position: absolute; bottom: 80px;">
+      <input type="range" min="10" max="100" value="10" id="debugrange">
+    </div>
     
   </div>
 
@@ -294,6 +320,9 @@
   #home canvas {
     width: auto !important;
     height: 100vh !important;
+
+
+    /* cursor: grab; */
     /* aspect-ratio: 16 / 9; */
   }
 
