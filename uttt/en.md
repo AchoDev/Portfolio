@@ -20,7 +20,7 @@ The goal for both players is to win enough small games, to line up three games i
 
 ## How to play
 
-- Install the game [here]('itch.io') on itch.io or directly from GitHub
+- Install the game [here](https://achodev.itch.io/ultra-tictactoe) on itch.io or directly from GitHub
 - Install RadminVPN or similar software and Launch
 - Connect to the same network with whoever you want to play against
 - If you're the host, start the game, select a name and profile picture and click on _'Host'_
@@ -50,14 +50,13 @@ In the beginning my estimate was, that this game was going to take about one wee
 
 The basic game structure, with the big field was done in a single day. I didn't use a canvas at all, because I thought just using regular widgets would make this process more streamlined and easier, but a bit more cookie-cutter, which is a compromise I was very willing to accept for a small sideproject like this.
 
-
 ### Day 1
 
-I used a Gridview with 3 columns and 3 rows, that holds a "SmallTTTField" Widget in each of it's cells. This is the widget for each small Game. A small Field also has a Gridview with 9 Buttons instead of Fields. Each single Field knows it's position on the big grid and each small button knows it's position in it's small Game. So when you press one of those buttons, it calls a function from the small field with it's own local position, which then calls a function on the big field, with it's global position. 
+I used a Gridview with 3 columns and 3 rows, that holds a "SmallTTTField" Widget in each of it's cells. This is the widget for each small Game. A small Field also has a Gridview with 9 Buttons instead of Fields. Each single Field knows it's position on the big grid and each small button knows it's position in it's small Game. So when you press one of those buttons, it calls a function from the small field with it's own local position, which then calls a function on the big field, with it's global position.
 
-``` dart
+```dart
 
-// SmallTTTFieldButton.dart 
+// SmallTTTFieldButton.dart
 
 void checkEnemyMark() {
   setState(() {
@@ -79,7 +78,7 @@ void checkMark() {
 
 ```
 
-``` dart
+```dart
 
 // SmallTTTField.dart
 
@@ -97,7 +96,7 @@ buttons = [
             },
 
             checkWinner: () {
-                checkWinner(); 
+                checkWinner();
                 widget.checkGlobalWinner();
             },
 
@@ -107,8 +106,7 @@ buttons = [
 
 ```
 
-
-``` dart
+```dart
 
 // GameScreen.dart
 
@@ -140,7 +138,7 @@ The big field functions as the "Game Manager" here. It would've been a better ap
 
 The "currentField" boolean describes, which Field is currently active. The rules say, that the position of the mark on a game translates to the field you're allowed to play in next. If currentfield is between 0-8, then only the respective field is active. If it's 9, then the player is allowed to play anywhere.
 
-``` dart
+```dart
 child: SmallTTTField(
   key: fieldKeys[i],
   checkField: checkField,
@@ -168,7 +166,7 @@ The next day, I started working on multiplayer. Like I said before, I used Socke
 
 What basically needed to happen was, when you mark a field, a packet, containing the information for where you placed it had to be sent to the server, which then sends it to the other player. The other player then could see that you placed something, and place something in return. Due to the simplicity of information for Super TicTacToe, the server-side code ended up being very short and easy to understand. I did not need to use any client-side prediction, packets every second or anything like that.
 
-``` dart
+```dart
 
 // Server.dart
 
@@ -274,7 +272,7 @@ class GameServer {
 
 The multiplayer part was done with that very quickly. After that I had to work on winning and loosing. What happens is, after every move, the field compares its lineup of markers, with each winning move. Once for you, and once for the enemy. If one of you has a winning position (three in a row), you mark the entire field for you. After that, the entire Game Field checks if the fields represent a winning position for either one of you, if yes, then that player wins.
 
-``` dart
+```dart
 // SmallTTTField.dart
 
 void checkWinner() {
@@ -330,20 +328,22 @@ After I was done, I made a short youtube video, showing my progress until now.
 
 <!-- [![Step Image](https://img.youtube.com/vi/JgWpx-lsXUg/0.jpg)](https://www.youtube.com/watch?v=JgWpx-lsXUg "Ultra TicTacToe multiplayer test") -->
 
-*ultra tictactoe multiplayer test*
+_ultra tictactoe multiplayer test_
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/JgWpx-lsXUg?si=V7vGWp7nFc7skJWC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Day 3 and onwards
 
 After those two days, all I had to do was cleaning up, a good menu screen easy multiplayer hosting, maps and so on. I drew the maps myself, with one of them even having a continuosly moving map, as if you were "walking"
 
-*Palace.png*
+_Palace.png_
 ![Palace Map](palace.png)
 
-*Night.png*
+_Night.png_
 ![Night Map](night.png)
 
-*Classroom.png*
+_Classroom.png_
 ![Classroom Map](classroom.png)
 
 </details>
+<!--  -->

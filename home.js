@@ -8,6 +8,7 @@ const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerH
 scene.background = new THREE.Color('#000000') 
 
 const renderer = new THREE.WebGLRenderer()
+renderer.shadowMap.enabled = true
 renderer.setSize(window.innerWidth, window.innerHeight)
 document.getElementById('home').appendChild(renderer.domElement)
 
@@ -17,12 +18,23 @@ const cube = new THREE.Mesh(geometry, material)
 scene.add(cube)
 
 
+
+
 const loader = new GLTFLoader()
 
 loader.load(
   'room.glb',
 
   function(gltf) {
+    gltf.scene.traverse( function( node ) {
+
+      if ( node.isMesh ) { 
+        node.castShadow = true;
+        node.receiveShadow = true 
+      }
+
+  } );
+
     scene.add(gltf.scene)
   },
 
@@ -38,7 +50,22 @@ loader.load(
 
 const ambient = new THREE.AmbientLight(0xFFFFFF, 0.5)
 
-const light = new THREE.SpotLight('#9A5FC0', 35, 10, 200, 0.25)
+
+// '#9A5FC0'
+const light = new THREE.SpotLight('#FFFFFF', 35, 100, 200, 0.25)
+
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+light.castShadow = true
+
+light.position.y = 4.67
+
+light.rotation.x = 8
+light.rotation.y = 3.1
+
+light.shadow.bias = -0.0005
+renderer.shadowMap.type = THREE.PCFSoftShadowMap
+
 
 const monitorlight1 = new THREE.RectAreaLight(
   '#FFFFFF',
@@ -47,22 +74,48 @@ const monitorlight1 = new THREE.RectAreaLight(
   5
 )
 
-monitorlight1.position.y = 3
-cube.position.y = 3
 
-light.castShadow = true
+const monitorlight2 = new THREE.RectAreaLight(
+  '#FFFFFF',
+  1,
+  10,
+  5
+)
+  
+
+monitorlight1.position.x = 0.3
+monitorlight1.position.y = 2.3
+monitorlight1.position.z = -1.8
+
+monitorlight1.rotation.y = 3
+
+monitorlight1.scale.x = 1.5
+monitorlight1.scale.y = 1.1
+monitorlight1.scale.z = 1
+
+monitorlight2.position.x = -1.8
+monitorlight2.position.y = 2.4
+monitorlight2.position.z = -1.6
+
+monitorlight2.rotation.y = 3.5
+
+monitorlight2.scale.x = 2
+monitorlight2.scale.y = 1.1
+
+cube.position.x = 3
+
+
 
 scene.add(light)
-scene.add(ambient)
+// scene.add(ambient)
 scene.add(monitorlight1)
+scene.add(monitorlight2)
 
 let lighttoggled = true;
 
 // light.position.z = 1
 
 camera.position.z = 3
-
-light.position.y = 6
 
 camera.position.y = 3
 
@@ -92,12 +145,10 @@ window.addEventListener('mousedown', () => {
   // angleX = cube.rotation.y
   // angleY = cube.rotation.x
 
-  document.body.style.cursor = "grabbing";
   
 });
 window.addEventListener('mouseup', () => {
   mouseclicked = false
-  document.body.style.cursor = "grab";
 });
 
 
@@ -113,7 +164,19 @@ window.addEventListener('mousemove', (e) => {
 })
 
 let moveamountdebug = 0.1
-const debugref = monitorlight1
+const debugref = light
+
+cube.position.x = debugref.position.x
+cube.position.y = debugref.position.y
+cube.position.z = debugref.position.z
+
+cube.rotation.x = debugref.rotation.x
+cube.rotation.y = debugref.rotation.y
+cube.rotation.z = debugref.rotation.z
+
+cube.scale.x = debugref.scale.x
+cube.scale.y = debugref.scale.y
+cube.scale.z = debugref.scale.z
 
 document.getElementById("rightbutton").addEventListener("click", () => {
   debugref.position.x += moveamountdebug
@@ -147,23 +210,23 @@ document.getElementById("backbutton").addEventListener("click", () => {
 
 
 document.getElementById("turnrightbutton").addEventListener("click", () => {
-  debugref.rotation.x += moveamountdebug
-  cube.rotation.x += moveamountdebug
+  debugref.rotation.y += moveamountdebug
+  cube.rotation.y += moveamountdebug
 })
 
 document.getElementById("turnleftbutton").addEventListener("click", () => {
-  debugref.rotation.x -= moveamountdebug
-  cube.rotation.x -= moveamountdebug
-})
-
-document.getElementById("turnupbutton").addEventListener("click", () => {
   debugref.rotation.y -= moveamountdebug
   cube.rotation.y -= moveamountdebug
 })
 
+document.getElementById("turnupbutton").addEventListener("click", () => {
+  debugref.rotation.x -= moveamountdebug
+  cube.rotation.x -= moveamountdebug
+})
+
 document.getElementById("turndownbutton").addEventListener("click", () => {
-  debugref.rotation.y += moveamountdebug
-  cube.rotation.y += moveamountdebug
+  debugref.rotation.x += moveamountdebug
+  cube.rotation.x += moveamountdebug
 })
 
 document.getElementById("turnfrontbutton").addEventListener("click", () => {
@@ -176,16 +239,44 @@ document.getElementById("turnbackbutton").addEventListener("click", () => {
   cube.rotation.z -= moveamountdebug
 })
 
+document.getElementById("scalexbutton").addEventListener("click", () => {
+  debugref.scale.x += moveamountdebug
+  cube.scale.x += moveamountdebug
+})
+document.getElementById("scaleybutton").addEventListener("click", () => {
+  debugref.scale.y += moveamountdebug
+  cube.scale.y += moveamountdebug
+})
+document.getElementById("scalezbutton").addEventListener("click", () => {
+  debugref.scale.z += moveamountdebug
+  cube.scale.z += moveamountdebug
+})
+
+document.getElementById("minusscalexbutton").addEventListener("click", () => {
+  debugref.scale.x -= moveamountdebug
+  cube.scale.x -= moveamountdebug
+})
+document.getElementById("minusscaleybutton").addEventListener("click", () => {
+  debugref.scale.y -= moveamountdebug
+  cube.scale.y -= moveamountdebug
+})
+document.getElementById("minusscalezbutton").addEventListener("click", () => {
+  debugref.scale.z -= moveamountdebug
+  cube.scale.z -= moveamountdebug
+})
+
 document.getElementById("printbutton").addEventListener("click", () => {
   console.log("POS:")
-  console.log(debugref.position.x)
-  console.log(debugref.position.y)
-  console.log(debugref.position.z)
+  console.log(debugref.position)
 
-  console.log("ROT: ")
-  console.log(debugref.rotation.x)
-  console.log(debugref.rotation.y)
-  console.log(debugref.rotation.z)
+  console.log("ROT:")
+  console.log(debugref.rotation)
+
+  console.log("SCALE:")
+  console.log(debugref.scale)
+
+  console.log("INTENSITY:")
+  console.log(debugref.intensity)
 })
 
 
@@ -193,10 +284,18 @@ document.getElementById("printbutton").addEventListener("click", () => {
 document.getElementById("togglebutton").addEventListener("click", () => {
   lighttoggled = !lighttoggled
 
-  monitorlight1.visible = lighttoggled
+  debugref.visible = lighttoggled
   cube.visible = lighttoggled
+})
+
+document.getElementById("toggledebugbutton").addEventListener("click", () => {
+  cube.visible = !cube.visible
 })
 
 document.getElementById("debugrange").oninput = (e) => {
   moveamountdebug = document.getElementById("debugrange").value / 100
+}
+
+document.getElementById("debugintensity").oninput = (e) => {
+  debugref.intensity = document.getElementById("debugintensity").value / 100
 }
