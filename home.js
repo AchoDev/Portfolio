@@ -8,7 +8,7 @@ const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerH
 scene.background = new THREE.Color('#000000') 
 
 const renderer = new THREE.WebGLRenderer()
-renderer.shadowMap.enabled = true
+// renderer.shadowMap.enabled = true
 renderer.setSize(window.innerWidth, window.innerHeight)
 document.getElementById('home').appendChild(renderer.domElement)
 

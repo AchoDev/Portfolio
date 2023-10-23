@@ -113,7 +113,11 @@ h1 {
 .project img {
   transition: ease-out .3s;
   width: auto;
-  height: 80%;
+  height: auto;
+
+
+  max-height: 80%;
+  max-width: 95%;
 }
 
 .project .overlay {
@@ -130,4 +134,17 @@ h1 {
   background: rgb(255, 255, 255);
 
   color: black;
+}
+
+#current-project-content {
+  padding: 10%;
+  min-height: 100vh;
+}
+
+#current-project-content img {
+  max-width: 80%;
+}
+
+.hljs-title {
+  color: #61aeee;
 }

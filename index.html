@@ -8,6 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
   
+
   <script type="importmap">
     {
       "imports": {
@@ -16,6 +17,7 @@
       }
     }
   </script>
+  
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,9 +38,45 @@
       desc: props.desc,
       imgsrc: `./images/${props.image}.png`,
       color: props.color,
+      text: props.color != null ? props.text : 'white',
+      mdpath: `./${props.image}/en.html`
     }
   }
 
+  class ProjectInfo {
+    name
+    image
+    color
+    mdpath
+
+    constructor(name, image, color, mdpath) {
+      this.name = name
+      this.image = image
+      this.color = color
+      this.mdpath = mdpath
+    }
+  }
+
+  let currentProject = new ProjectInfo()
+  
+  function openProjectPage(name, image, color, mdpath) {
+    this.currentTab = 'project-page'
+
+    fetch(mdpath)
+    .then((res) => res.text())
+    .then((text) => {
+      document.getElementById('current-project-content').innerHTML = text
+    })
+    .catch((e) => console.error(e));
+
+    console.log(color)
+
+    currentProject = new ProjectInfo(
+      name, image, color, mdpath
+    )
+
+
+  }
 
   createApp({
     currentTab: "home",
@@ -46,11 +84,13 @@
       document.title = `AchoDev - ${tab}`
       
       this.currentTab = tab;
+
+
     },
 
     Project,
-
-
+    currentProject,
+    openProjectPage,
   }).mount()
 
 </script>
@@ -137,11 +177,18 @@
 
   <div id="projects" class="page" v-show="currentTab === 'projects'">
 
-    <h1>Projects</h1>
+    <center>
+
+      <h1>Projects</h1>
+    </center>
+
+    <br>
 
     <template id="project-template">
       
-      <div class="project" :style="`background: ${color}`">
+      <div class="project" :style="`background: ${color}`" @click="openProjectPage(
+        name, imgsrc, color, mdpath
+      )">
 
         <div class="darkener">
           &nbsp;
@@ -150,7 +197,7 @@
         <img :src=imgsrc alt="AmA Logo">
 
         <div class="name">
-          <span :style="`background: ${color}`">
+          <span :style="`background: ${color}; color: ${text}`">
             {{ name }}
           </span>
         </div>
@@ -173,7 +220,8 @@
         name: 'Ultra TicTacToe', 
         desc: 'Best game ever',
         image: 'uttt',
-        color: 'royalblue',
+        color: 'rgb(250, 68, 55)',
+
       })"></div>
   
   
@@ -185,52 +233,65 @@
       })"></div>
 
       <div v-scope="Project({
-        name: 'YOURanimelist', 
+        name: 'YOURanimeList', 
         desc: 'list',
-        image: 'kang2',
-        color: 'linear-gradient(0.9turn, rgb(255, 115, 0), red)',
+        image: 'yal',
+        color: 'rgba(91,152,213,255)',
       })"></div>
 
       <div v-scope="Project({
         name: 'Lumina Engine', 
         desc: 'pygame engine',
-        image: 'kang2',
-        color: 'linear-gradient(0.9turn, rgb(255, 115, 0), red)',
+        image: '',
+        color: 'rgb(152, 68, 212)',
       })"></div>
 
 
       <div v-scope="Project({
         name: 'AchoMatico-Launcher', 
         desc: 'launcher',
-        image: 'kang2',
-        color: 'linear-gradient(0.9turn, rgb(255, 115, 0), red)',
+        image: '',
+        color: 'blue',
       })"></div>
 
       <div v-scope="Project({
         name: 'Yo-Masta-Nag', 
         desc: 'pygame game',
-        image: 'kang2',
-        color: 'linear-gradient(0.9turn, rgb(255, 115, 0), red)',
+        image: '',
+        color: 'rgb(54, 199, 56)',
       })"></div>
 
       <div v-scope="Project({
         name: 'Banana World', 
         desc: 'unity game',
-        image: 'kang2',
-        color: 'linear-gradient(0.9turn, rgb(255, 115, 0), red)',
+        image: '',
+        color: 'rgb(255, 226, 61)',
+        text: 'black',
       })"></div>
 
       <div v-scope="Project({
         name: 'Painter Super Yacht Finishing', 
         desc: 'website',
-        image: 'kang2',
+        image: '',
         color: 'white',
+        text: 'black',
       })"></div>
     </div>
 
   </div>
 
-  
+  <div id="project-page" class="page" v-show="currentTab === 'project-page'">
+    <h1> {{ currentProject.name }} </h1>
+    <button @click="currentTab = 'projects'" type="button">
+      <--
+    </button>
+
+    <!-- <zero-md :src="currentProject.mdpath"></zero-md> -->
+    <!-- <zero-md id="project-viewer" src="./uttt/en.md"></zero-md> -->
+    <!-- <iframe src="./uttt/en.html" seamless></iframe> -->
+
+    <div id="current-project-content" :style="`background: ${currentProject.color};`"></div>
+  </div>
 
   <div id="contact" v-show="currentTab === 'contact'">
     contact
@@ -313,8 +374,10 @@
       rgb(12, 21, 53),
       rgb(24, 9, 29),
       rgb(48, 7, 7)
-  
+      
     );
+    background-attachment: fixed;
+    background-size: cover;
 
     font-family: 'Nunito', sans-serif;
 

@@ -1,0 +1,208 @@
+
+<h1>Kang2</h1>
+
+<p>
+  Kang2 is a high-level, easy to learn programming language. It combines many loved features of other popular languages, while adding new and exciting ideas for future languages to come. It uses NodeJS and is best used for small terminal applications and to see, how a interpreter works under the hood. It's relatively small size makes it easy to tinker with and make new additions.
+</p>
+
+<h2>
+  Documentation
+</h2>
+
+
+<!-- in and output -->
+<details>
+<summary>In- and Output</summary>
+
+<strong>Output</strong> is gotten, by using the <code>log</code> keyword
+
+<pre>
+  <code id="htmlViewer" style="color:rgb(171, 178, 191); font-weight:400;background-color:rgb(40, 44, 52);background:rgb(40, 44, 52);display:block;padding: .5em;"><span style="color:rgb(230, 192, 123); font-weight:400;">log</span> <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;Hello World!&quot;</span>
+         
+<span style="color:rgb(92, 99, 112); font-weight:400;">// CONSOLE</span>
+Hello World!
+</code></pre>
+
+To get <strong>Input</strong>, the <code>input</code> keyword needs to be used
+
+<pre>
+<code id="htmlViewer" style="color:rgb(171, 178, 191); font-weight:400;background-color:rgb(40, 44, 52);background:rgb(40, 44, 52);display:block;padding: .5em;">input <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;Name?&quot;</span>
+
+<span style="color:rgb(92, 99, 112); font-weight:400;">// CONSOLE</span>
+&gt;&gt; Name?</code>
+</pre>
+
+<blockquote>Both log and input are not functions though, they cannot be invoked in a calculation and do not return anything. They are statements</blockquote>
+
+<code>input</code> can be saved with the arrow
+
+<pre>
+<code id="htmlViewer" style="color:rgb(171, 178, 191); font-weight:400;background-color:rgb(40, 44, 52);background:rgb(40, 44, 52);display:block;padding: .5em;">var name
+<span style="color:rgb(230, 192, 123); font-weight:400;">input</span> <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;Name? &quot;</span> -&gt; name
+
+<span style="color:rgb(230, 192, 123); font-weight:400;">input</span> <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;Age? &quot;</span> -&gt; var age
+  
+  
+<span style="color:rgb(230, 192, 123); font-weight:400;">log</span> name
+<span style="color:rgb(230, 192, 123); font-weight:400;">log</span> age
+  
+<span style="color:rgb(92, 99, 112); font-weight:400;">// CONSOLE</span>
+
+&gt;&gt; Name? acho
+&gt;&gt; Age?  <span style="color:rgb(209, 154, 102); font-weight:400;">18</span>
+  
+<span style="color:rgb(152, 195, 121); font-weight:400;">&quot;acho&quot;</span>
+<span style="color:rgb(209, 154, 102); font-weight:400;">18</span></code>
+</pre>
+
+<hr>
+
+</details>
+
+<!-- variables -->
+<details>
+
+<summary>Variables</summary>
+
+Variables in Kang2 are declared with the <code>var</code> keyword, with the <strong>name</strong>, an <strong>equals sign</strong> and the <strong>value</strong> following
+
+<blockquote>There are no types, rather the variables are declared dynamically</blockquote>
+
+<pre>
+<code id="htmlViewer" style="color:rgb(171, 178, 191); font-weight:400;background-color:rgb(40, 44, 52);background:rgb(40, 44, 52);display:block;padding: .5em;"><span style="color:rgb(198, 120, 221); font-weight:400;">var</span> name = <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;acho&quot;</span>
+<span style="color:rgb(198, 120, 221); font-weight:400;">var</span> number = <span style="color:rgb(209, 154, 102); font-weight:400;">10</span>
+<span style="color:rgb(198, 120, 221); font-weight:400;">var</span> condition = <span style="color:rgb(86, 182, 194); font-weight:400;">true</span>
+ 
+<span style="color:rgb(198, 120, 221); font-weight:400;">var</span> <span style="color:rgb(198, 120, 221); font-weight:400;">array</span> = [<span style="color:rgb(209, 154, 102); font-weight:400;">10</span>, <span style="color:rgb(209, 154, 102); font-weight:400;">20</span>, <span style="color:rgb(209, 154, 102); font-weight:400;">30</span>, <span style="color:rgb(209, 154, 102); font-weight:400;">40</span>]
+<span style="color:rgb(198, 120, 221); font-weight:400;">var</span> arrayValue = <span style="color:rgb(198, 120, 221); font-weight:400;">array</span>[<span style="color:rgb(209, 154, 102); font-weight:400;">1</span>]</code></pre>
+
+<blockquote>Everywhere, where a value must be put in, calculations are possible</blockquote>
+
+<pre>
+<code id="htmlViewer" style="color:rgb(171, 178, 191); font-weight:400;background-color:rgb(40, 44, 52);background:rgb(40, 44, 52);display:block;padding: .5em;"><span style="color:rgb(198, 120, 221); font-weight:400;">var</span> num1 = <span style="color:rgb(209, 154, 102); font-weight:400;">10</span>
+<span style="color:rgb(198, 120, 221); font-weight:400;">var</span> num2 = <span style="color:rgb(209, 154, 102); font-weight:400;">20</span>
+
+<span style="color:rgb(198, 120, 221); font-weight:400;">var</span> num3 = (num1 + num2) * <span style="color:rgb(209, 154, 102); font-weight:400;">2</span>
+
+log num3 + <span style="color:rgb(209, 154, 102); font-weight:400;">1</span>
+
+<span style="color:rgb(92, 99, 112); font-weight:400;">// CONSOLE</span>
+<span style="color:rgb(209, 154, 102); font-weight:400;">61</span></code></pre>
+
+<hr>
+
+</details>
+
+<!-- comparisons -->
+<details>
+
+<summary>Comparisons</summary>
+
+You can compare two values with these keywords:
+
+<ul>
+  <li>
+    <code>==</code>
+    <pre>
+    <code id="htmlViewer" style="color:rgb(171, 178, 191); font-weight:400;background-color:rgb(40, 44, 52);background:rgb(40, 44, 52);display:block;padding: .5em;"><span style="color:rgb(230, 192, 123); font-weight:400;">log</span> 10 == 10
+    <span style="color:rgb(230, 192, 123); font-weight:400;">log</span> <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;Hello&quot;</span> == <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;World&quot;</span>
+    <span style="color:rgb(230, 192, 123); font-weight:400;">log</span> 1 == 2
+    
+    // CONSOLE
+    <span style="color:rgb(86, 182, 194); font-weight:400;">true</span>
+    <span style="color:rgb(86, 182, 194); font-weight:400;">false</span>
+    <span style="color:rgb(86, 182, 194); font-weight:400;">false</span></code></pre>
+  </li>
+
+  <li>
+    <code>> <</code>
+    <pre>
+    <code id="htmlViewer" style="color:rgb(171, 178, 191); font-weight:400;background-color:rgb(40, 44, 52);background:rgb(40, 44, 52);display:block;padding: .5em;"><span style="color:rgb(230, 192, 123); font-weight:400;">log</span> 10 &lt; 15
+    <span style="color:rgb(230, 192, 123); font-weight:400;">log</span> 20 &gt; 30
+    
+    <span style="color:rgb(230, 192, 123); font-weight:400;">log</span> 10 &gt;= 10
+    <span style="color:rgb(230, 192, 123); font-weight:400;">log</span> 10 &lt;= 30 
+    
+    // CONSOLE
+    <span style="color:rgb(86, 182, 194); font-weight:400;">true</span>
+    <span style="color:rgb(86, 182, 194); font-weight:400;">false</span>
+    <span style="color:rgb(86, 182, 194); font-weight:400;">true</span>
+    <span style="color:rgb(86, 182, 194); font-weight:400;">true</span></code></pre>
+  </li>
+
+  <li>
+    <code>&&</code>
+    <pre>
+    <code id="htmlViewer" style="color:rgb(171, 178, 191); font-weight:400;background-color:rgb(40, 44, 52);background:rgb(40, 44, 52);display:block;padding: .5em;"><span style="color:rgb(230, 192, 123); font-weight:400;">log</span> 10 == 10 &amp;&amp; 20 == 20
+    <span style="color:rgb(230, 192, 123); font-weight:400;">log</span> 1 &gt; 2 &amp;&amp; 10 == 10
+    
+    // CONSOLE
+    <span style="color:rgb(86, 182, 194); font-weight:400;">true</span>
+    <span style="color:rgb(86, 182, 194); font-weight:400;">false</span></code></pre>
+  </li>
+</ul>
+
+<hr>
+
+</details>
+
+<!-- conditions -->
+<details>
+
+<summary>Conditions</summary>
+
+<h3>Conditions</h3>
+
+Conditions can be used with the <code>if</code> keyword
+
+<blockquote>Note that Kang2 doesn't use parenthesis, unlike other languages</blockquote>
+
+<pre>
+<code id="htmlViewer" style="color:rgb(171, 178, 191); font-weight:400;background-color:rgb(40, 44, 52);background:rgb(40, 44, 52);display:block;padding: .5em;"><span style="color:rgb(198, 120, 221); font-weight:400;">if</span> <span style="color:rgb(209, 154, 102); font-weight:400;">10</span> == <span style="color:rgb(209, 154, 102); font-weight:400;">10</span> {
+    <span style="color:rgb(230, 192, 123); font-weight:400;">log</span> <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;hello&quot;</span>
+}
+
+<span style="color:rgb(198, 120, 221); font-weight:400;">if</span> <span style="color:rgb(230, 192, 123); font-weight:400;">input</span> <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;what is your name?&quot;</span> == <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;acho&quot;</span> {
+    <span style="color:rgb(230, 192, 123); font-weight:400;">log</span> <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;hello acho!&quot;</span>
+}</code></pre>
+
+Get an <strong>else if</strong> with the <code>elseif</code>- and a final <strong>else</strong> statement with the <code>else</code> keyword
+
+<pre>
+<code id="htmlViewer" style="color:rgb(171, 178, 191); font-weight:400;background-color:rgb(40, 44, 52);background:rgb(40, 44, 52);display:block;padding: .5em;"><span style="color:rgb(198, 120, 221); font-weight:400;">if</span> <span style="color:rgb(209, 154, 102); font-weight:400;">10</span> == <span style="color:rgb(209, 154, 102); font-weight:400;">20</span> {
+    <span style="color:rgb(230, 192, 123); font-weight:400;">log</span> <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;5 + 5 = 20&quot;</span>
+} <span style="color:rgb(198, 120, 221); font-weight:400;">elseif</span> <span style="color:rgb(209, 154, 102); font-weight:400;">10</span> == <span style="color:rgb(209, 154, 102); font-weight:400;">30</span>{
+    <span style="color:rgb(230, 192, 123); font-weight:400;">log</span> <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;5 + 5 = 30&quot;</span>
+} <span style="color:rgb(198, 120, 221); font-weight:400;">else</span> {
+    <span style="color:rgb(230, 192, 123); font-weight:400;">log</span> <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;omg&quot;</span>
+}</code></pre>
+
+<hr>
+
+</details>
+
+<!-- loops -->
+<details>
+
+<summary>Loops</summary>
+<h3>Loops</h3>
+
+The <code>loop</code> keyword is needed to use <strong>loops</strong>
+
+<blockquote>To <strong>loop</strong> for a specific amount of times, just a number is necessary</blockquote>
+
+<pre>
+<code id="htmlViewer" style="color:rgb(171, 178, 191); font-weight:400;background-color:rgb(40, 44, 52);background:rgb(40, 44, 52);display:block;padding: .5em;"><span style="color:rgb(198, 120, 221); font-weight:400;">loop</span> <span style="color:rgb(209, 154, 102); font-weight:400;">3</span> {
+    log <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;Hello&quot;</span>
+}
+
+<span style="color:rgb(92, 99, 112); font-weight:400;">// CONSOLE</span>
+<span style="color:rgb(152, 195, 121); font-weight:400;">&quot;Hello&quot;</span>
+<span style="color:rgb(152, 195, 121); font-weight:400;">&quot;Hello&quot;</span>
+<span style="color:rgb(152, 195, 121); font-weight:400;">&quot;Hello&quot;</span></code></pre>
+
+<blockquote>Unlike other programming languages, there is no <strong>for</strong>- and <strong>while</strong>, rather the <code>loop</code> combines both of those COMING SOON</blockquote>
+
+<hr>
+
+</details>
