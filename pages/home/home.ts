@@ -1,6 +1,7 @@
 
 
 import * as THREE from 'three'
+// @ts-ignore
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 

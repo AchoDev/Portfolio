@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AchoDev</title>
+  <title>AchoDev - Home</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,109 +11,34 @@
 
   <link rel="stylesheet" href="css/stylesheet.css">
 
+  <script src="router.js" defer></script>
+
 </head>
 
+<!-- import { createApp, reactive } from 'https://unpkg.com/petite-vue?module' -->
+<!-- createApp({vars}).mount() -->
 
-<script type='module'>
-  import { createApp, reactive } from 'https://unpkg.com/petite-vue?module'
-
-  
-  createApp({
-    currentTab: "home",
-    switchTab(tab) {
-      document.title = `AchoDev - ${tab}`
-      
-      this.currentTab = tab;
-
-    },
-
-    Project,
-    currentProject,
-    openProjectPage,
-  }).mount()
-
-</script>
-
-<body v-scope>
-
-  <script src="home.js" type="module" defer></script>
-
+<body>
   <nav>
-
       <ul>
         <li>
-          <button @click="switchTab('home')">Home</button>
+          <a href="/">Home</a>
         </li>
         <li>
-          <button @click="switchTab('about')">About</button>
+          <a href="/about">About</a>
         </li>
         <li>
-          <button @click="switchTab('projects')">Projects</button>
+          <a href="projects">Projects</a>
         </li>
         <li>
-          <button @click="switchTab('contact')">Contact</button>
+          <a href="contact">Contact</a>
         </li>
       </ul>
-
   </nav>
 
-
-  <div id="home" class="page" v-show="currentTab === 'home'">
-
-    <div style="position: absolute; bottom: 0;">
-      <button id="frontbutton"> X </button>
-      <button id="leftbutton"> < </button>
-      <button id="upbutton"> ^ </button>
-      <button id="downbutton"> v </button>
-      <button id="rightbutton"> > </button>
-      <button id="backbutton"> O </button>
-
-
-      <button id="printbutton"> print </button>
-      <button id="togglebutton"> toggle </button>
-      <button id="toggledebugbutton"> toggle cube </button>
-    </div>
-
-    <div style="position: absolute; bottom: 40px;">
-      <button id="turnfrontbutton"> -| </button>
-      <button id="turnleftbutton"> < </button>
-      <button id="turnupbutton"> ^ </button>
-      <button id="turndownbutton"> v </button>
-      <button id="turnrightbutton"> > </button>
-      <button id="turnbackbutton"> |- </button>
-    </div>
-
-    <div style="position: absolute; bottom: 80px;">
-      <button id="scalexbutton"> |<- ->| </button>
-      <button id="minusscalexbutton"> |-> <-| </button>
-      <button id="scaleybutton"> ^^ </button>
-      <button id="minusscaleybutton"> vv </button>
-      <button id="scalezbutton"> O </button>
-      <button id="minusscalezbutton"> X </button>
-    </div>
-
-    <div style="position: absolute; bottom: 120px;">
-      <input type="range" min="10" max="100" value="10" id="debugrange">
-    </div>
-
-    <div style="position: absolute; bottom: 160px;">
-      <input type="range" min="1" max="10000" value="10" id="debugintensity">
-    </div>
-    
-  </div>
-
-  
-
-  
-
-  
-
-  <div id="contact" v-show="currentTab === 'contact'">
-    contact
-  </div>
+  <div id="content"></div>
 
 </body>
-
 
 </html>
 
@@ -180,6 +105,7 @@
   }
 
   body {
+    margin: 0;
     height: 100%;
     width: 100%;
     overflow-x: hidden;
@@ -197,25 +123,6 @@
     font-family: 'Nunito', sans-serif;
 
     color: white;
-  }
-
-  
-
-  #home {
-    height: 100vh;
-    width: 100vw;  
-    display: grid;
-    place-items: center;
-  }
-
-
-  #home canvas {
-    width: auto !important;
-    height: 100vh !important;
-
-
-    /* cursor: grab; */
-    /* aspect-ratio: 16 / 9; */
   }
 
 </style>

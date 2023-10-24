@@ -1,5 +1,5 @@
 
-import {cube, debugref} from './home.ts'
+import {cube, debugref} from './home.js'
 
 let moveamountdebug: number = 0.1
 let lighttoggled: boolean = true;
