@@ -5,11 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AchoDev</title>
 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
+  
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.157.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.157.0/examples/jsm/"
+      }
+    }
+  </script>
+  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/stylesheet.css">
+  <link rel="stylesheet" href="projects.css">
 
 </head>
 
@@ -17,13 +31,60 @@
 <script type='module'>
   import { createApp, reactive } from 'https://unpkg.com/petite-vue?module'
 
+  function Project(props) {
+    return {
+      $template: '#project-template',
+      name: props.name,
+      desc: props.desc,
+      imgsrc: `./images/${props.image}.png`,
+      color: props.color,
+      text: props.color != null ? props.text : 'white',
+      mdpath: `./${props.image}/en.html`
+    }
+  }
+
+  class ProjectInfo {
+    name
+    image
+    color
+    mdpath
+
+    constructor(name, image, color, mdpath) {
+      this.name = name
+      this.image = image
+      this.color = color
+      this.mdpath = mdpath
+    }
+  }
+
+  let currentProject = new ProjectInfo()
   
+  function openProjectPage(name, image, color, mdpath) {
+    this.currentTab = 'project-page'
+
+    fetch(mdpath)
+    .then((res) => res.text())
+    .then((text) => {
+      document.getElementById('current-project-content').innerHTML = text
+    })
+    .catch((e) => console.error(e));
+
+    console.log(color)
+
+    currentProject = new ProjectInfo(
+      name, image, color, mdpath
+    )
+
+
+  }
+
   createApp({
     currentTab: "home",
     switchTab(tab) {
       document.title = `AchoDev - ${tab}`
       
       this.currentTab = tab;
+
 
     },
 
@@ -102,11 +163,135 @@
     
   </div>
 
-  
+  <div id="about" class ="page" v-show="currentTab === 'about'">
+    about
+    about
+    about
+    about
+    about
+    about
+    about
+    about
+    about    
+  </div>
 
-  
+  <div id="projects" class="page" v-show="currentTab === 'projects'">
 
+    <center>
+
+      <h1>Projects</h1>
+    </center>
+
+    <br>
+
+    <template id="project-template">
+      
+      <div class="project" :style="`background: ${color}`" @click="openProjectPage(
+        name, imgsrc, color, mdpath
+      )">
+
+        <div class="darkener">
+          &nbsp;
+        </div>
+        
+        <img :src=imgsrc alt="AmA Logo">
+
+        <div class="name">
+          <span :style="`background: ${color}; color: ${text}`">
+            {{ name }}
+          </span>
+        </div>
+        <div class="overlay">
+          {{desc}}
+        </div>
+      </div>
+    </template>
+
+    <div id="wrapper">
+
+      <div v-scope="Project({
+        name: 'AmA', 
+        desc: 'AmA is one of the programs of all time',
+        image: 'ama',
+        color: 'orange',
+      })"></div>
   
+      <div v-scope="Project({
+        name: 'Ultra TicTacToe', 
+        desc: 'Best game ever',
+        image: 'uttt',
+        color: 'rgb(250, 68, 55)',
+
+      })"></div>
+  
+  
+      <div v-scope="Project({
+        name: 'Kang2', 
+        desc: 'Best programming language',
+        image: 'kang2',
+        color: 'linear-gradient(0.9turn, rgb(255, 115, 0), red)',
+      })"></div>
+
+      <div v-scope="Project({
+        name: 'YOURanimeList', 
+        desc: 'list',
+        image: 'yal',
+        color: 'rgba(91,152,213,255)',
+      })"></div>
+
+      <div v-scope="Project({
+        name: 'Lumina Engine', 
+        desc: 'pygame engine',
+        image: '',
+        color: 'rgb(152, 68, 212)',
+      })"></div>
+
+
+      <div v-scope="Project({
+        name: 'AchoMatico-Launcher', 
+        desc: 'launcher',
+        image: '',
+        color: 'blue',
+      })"></div>
+
+      <div v-scope="Project({
+        name: 'Yo-Masta-Nag', 
+        desc: 'pygame game',
+        image: '',
+        color: 'rgb(54, 199, 56)',
+      })"></div>
+
+      <div v-scope="Project({
+        name: 'Banana World', 
+        desc: 'unity game',
+        image: '',
+        color: 'rgb(255, 226, 61)',
+        text: 'black',
+      })"></div>
+
+      <div v-scope="Project({
+        name: 'Painter Super Yacht Finishing', 
+        desc: 'website',
+        image: '',
+        color: 'white',
+        text: 'black',
+      })"></div>
+    </div>
+
+  </div>
+
+  <div id="project-page" class="page" v-show="currentTab === 'project-page'">
+    <h1> {{ currentProject.name }} </h1>
+    <button @click="currentTab = 'projects'" type="button">
+      <--
+    </button>
+
+    <!-- <zero-md :src="currentProject.mdpath"></zero-md> -->
+    <!-- <zero-md id="project-viewer" src="./uttt/en.md"></zero-md> -->
+    <!-- <iframe src="./uttt/en.html" seamless></iframe> -->
+
+    <div id="current-project-content" :style="`background: ${currentProject.color};`"></div>
+  </div>
 
   <div id="contact" v-show="currentTab === 'contact'">
     contact
