@@ -37,13 +37,43 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var routes = {
     '/': {
         title: 'Home',
-        page: 'pages/home/home.html'
+        page: 'pages/home/home.html',
+    },
+    '/about': {
+        title: 'About',
+        page: 'pages/about/about.html'
     },
     '/projects': {
         title: 'Projects',
         page: 'pages/projects/projects.html'
-    }
+    },
+    '/contact': {
+        title: 'Contact',
+        page: 'pages/contact/contact.html'
+    },
 };
+var preloadedHTML;
+Array.from(document.getElementsByTagName("a")).forEach(function (element) {
+    element.addEventListener('mouseenter', function (e) {
+        console.log("loading " + element.href);
+        if (preloadedHTML != null)
+            preloadedHTML.controller.abort();
+        var controller = new AbortController();
+        preloadedHTML = {
+            url: element.href,
+            promise: fetch(element.href, { signal: controller.signal }),
+            controller: controller,
+            result: "",
+        };
+        preloadedHTML.promise.then(function (res) {
+            console.log("loaded!!!");
+            return res.text().then(function (t) {
+                console.log(t);
+                preloadedHTML.result = t;
+            });
+        });
+    });
+});
 document.addEventListener("click", function (e) {
     var target = e.target;
     if (!target.matches("nav a")) {
@@ -53,26 +83,59 @@ document.addEventListener("click", function (e) {
     handleRouteChange(e);
 });
 var targetDiv = document.getElementById("content");
+var targetScript = document.getElementById("page-js");
 function handleRouteChange(event) {
-    console.log(event.target.href);
     window.history.pushState({}, "", event.target.href);
-    urlLocationHandler();
+    urlLocationHandler(event);
 }
-function urlLocationHandler() {
+function urlLocationHandler(event) {
     return __awaiter(this, void 0, void 0, function () {
         var route, html;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     route = routes[window.location.pathname];
-                    return [4 /*yield*/, fetch(route.page).then(function (res) { return res.text(); })];
-                case 1:
+                    if (!(event != null && event.target.href === preloadedHTML.url)) return [3 /*break*/, 1];
+                    html = preloadedHTML.result;
+                    return [3 /*break*/, 3];
+                case 1: return [4 /*yield*/, fetch(route.page).then(function (res) { return res.text(); })];
+                case 2:
                     html = _a.sent();
-                    targetDiv.innerHTML = html;
+                    _a.label = 3;
+                case 3:
+                    document.title = route.title;
+                    targetDiv.innerHTML = "";
+                    targetDiv.appendChild(parseHTML(html));
                     return [2 /*return*/];
             }
         });
     });
+}
+function parseHTML(input) {
+    var _this = this;
+    var parsedHTML = document.createElement("div");
+    var parser = new DOMParser();
+    parsedHTML.appendChild(parser.parseFromString(input, 'text/html').documentElement);
+    var scripts = parsedHTML.querySelectorAll('script');
+    scripts.forEach(function (element) { return __awaiter(_this, void 0, void 0, function () {
+        var newScript, _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    newScript = document.createElement('script');
+                    _a = newScript;
+                    return [4 /*yield*/, fetch(element.src).then(function (res) { return res.text(); })];
+                case 1:
+                    _a.text = _b.sent();
+                    newScript.type = element.type;
+                    newScript.defer = element.defer;
+                    parsedHTML.insertBefore(newScript, parsedHTML.firstChild);
+                    console.log(newScript);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    return parsedHTML;
 }
 urlLocationHandler();
 window.onpopstate = urlLocationHandler;

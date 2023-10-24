@@ -1,106 +1,104 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var home_js_1 = require("./home.js");
+import { cube, debugref } from './home.js';
 var moveamountdebug = 0.1;
 var lighttoggled = true;
-home_js_1.cube.position.x = home_js_1.debugref.position.x;
-home_js_1.cube.position.y = home_js_1.debugref.position.y;
-home_js_1.cube.position.z = home_js_1.debugref.position.z;
-home_js_1.cube.rotation.x = home_js_1.debugref.rotation.x;
-home_js_1.cube.rotation.y = home_js_1.debugref.rotation.y;
-home_js_1.cube.rotation.z = home_js_1.debugref.rotation.z;
-home_js_1.cube.scale.x = home_js_1.debugref.scale.x;
-home_js_1.cube.scale.y = home_js_1.debugref.scale.y;
-home_js_1.cube.scale.z = home_js_1.debugref.scale.z;
+cube.position.x = debugref.position.x;
+cube.position.y = debugref.position.y;
+cube.position.z = debugref.position.z;
+cube.rotation.x = debugref.rotation.x;
+cube.rotation.y = debugref.rotation.y;
+cube.rotation.z = debugref.rotation.z;
+cube.scale.x = debugref.scale.x;
+cube.scale.y = debugref.scale.y;
+cube.scale.z = debugref.scale.z;
 document.getElementById("rightbutton").addEventListener("click", function () {
-    home_js_1.debugref.position.x += moveamountdebug;
-    home_js_1.cube.position.x += moveamountdebug;
+    debugref.position.x += moveamountdebug;
+    cube.position.x += moveamountdebug;
 });
 document.getElementById("leftbutton").addEventListener("click", function () {
-    home_js_1.debugref.position.x -= moveamountdebug;
-    home_js_1.cube.position.x -= moveamountdebug;
+    debugref.position.x -= moveamountdebug;
+    cube.position.x -= moveamountdebug;
 });
 document.getElementById("upbutton").addEventListener("click", function () {
-    home_js_1.debugref.position.y += moveamountdebug;
-    home_js_1.cube.position.y += moveamountdebug;
+    debugref.position.y += moveamountdebug;
+    cube.position.y += moveamountdebug;
 });
 document.getElementById("downbutton").addEventListener("click", function () {
-    home_js_1.debugref.position.y -= moveamountdebug;
-    home_js_1.cube.position.y -= moveamountdebug;
+    debugref.position.y -= moveamountdebug;
+    cube.position.y -= moveamountdebug;
 });
 document.getElementById("frontbutton").addEventListener("click", function () {
-    home_js_1.debugref.position.z += moveamountdebug;
-    home_js_1.cube.position.z += moveamountdebug;
+    debugref.position.z += moveamountdebug;
+    cube.position.z += moveamountdebug;
 });
 document.getElementById("backbutton").addEventListener("click", function () {
-    home_js_1.debugref.position.z -= moveamountdebug;
-    home_js_1.cube.position.z -= moveamountdebug;
+    debugref.position.z -= moveamountdebug;
+    cube.position.z -= moveamountdebug;
 });
 document.getElementById("turnrightbutton").addEventListener("click", function () {
-    home_js_1.debugref.rotation.y += moveamountdebug;
-    home_js_1.cube.rotation.y += moveamountdebug;
+    debugref.rotation.y += moveamountdebug;
+    cube.rotation.y += moveamountdebug;
 });
 document.getElementById("turnleftbutton").addEventListener("click", function () {
-    home_js_1.debugref.rotation.y -= moveamountdebug;
-    home_js_1.cube.rotation.y -= moveamountdebug;
+    debugref.rotation.y -= moveamountdebug;
+    cube.rotation.y -= moveamountdebug;
 });
 document.getElementById("turnupbutton").addEventListener("click", function () {
-    home_js_1.debugref.rotation.x -= moveamountdebug;
-    home_js_1.cube.rotation.x -= moveamountdebug;
+    debugref.rotation.x -= moveamountdebug;
+    cube.rotation.x -= moveamountdebug;
 });
 document.getElementById("turndownbutton").addEventListener("click", function () {
-    home_js_1.debugref.rotation.x += moveamountdebug;
-    home_js_1.cube.rotation.x += moveamountdebug;
+    debugref.rotation.x += moveamountdebug;
+    cube.rotation.x += moveamountdebug;
 });
 document.getElementById("turnfrontbutton").addEventListener("click", function () {
-    home_js_1.debugref.rotation.z += moveamountdebug;
-    home_js_1.cube.rotation.z += moveamountdebug;
+    debugref.rotation.z += moveamountdebug;
+    cube.rotation.z += moveamountdebug;
 });
 document.getElementById("turnbackbutton").addEventListener("click", function () {
-    home_js_1.debugref.rotation.z -= moveamountdebug;
-    home_js_1.cube.rotation.z -= moveamountdebug;
+    debugref.rotation.z -= moveamountdebug;
+    cube.rotation.z -= moveamountdebug;
 });
 document.getElementById("scalexbutton").addEventListener("click", function () {
-    home_js_1.debugref.scale.x += moveamountdebug;
-    home_js_1.cube.scale.x += moveamountdebug;
+    debugref.scale.x += moveamountdebug;
+    cube.scale.x += moveamountdebug;
 });
 document.getElementById("scaleybutton").addEventListener("click", function () {
-    home_js_1.debugref.scale.y += moveamountdebug;
-    home_js_1.cube.scale.y += moveamountdebug;
+    debugref.scale.y += moveamountdebug;
+    cube.scale.y += moveamountdebug;
 });
 document.getElementById("scalezbutton").addEventListener("click", function () {
-    home_js_1.debugref.scale.z += moveamountdebug;
-    home_js_1.cube.scale.z += moveamountdebug;
+    debugref.scale.z += moveamountdebug;
+    cube.scale.z += moveamountdebug;
 });
 document.getElementById("minusscalexbutton").addEventListener("click", function () {
-    home_js_1.debugref.scale.x -= moveamountdebug;
-    home_js_1.cube.scale.x -= moveamountdebug;
+    debugref.scale.x -= moveamountdebug;
+    cube.scale.x -= moveamountdebug;
 });
 document.getElementById("minusscaleybutton").addEventListener("click", function () {
-    home_js_1.debugref.scale.y -= moveamountdebug;
-    home_js_1.cube.scale.y -= moveamountdebug;
+    debugref.scale.y -= moveamountdebug;
+    cube.scale.y -= moveamountdebug;
 });
 document.getElementById("minusscalezbutton").addEventListener("click", function () {
-    home_js_1.debugref.scale.z -= moveamountdebug;
-    home_js_1.cube.scale.z -= moveamountdebug;
+    debugref.scale.z -= moveamountdebug;
+    cube.scale.z -= moveamountdebug;
 });
 document.getElementById("printbutton").addEventListener("click", function () {
     console.log("POS:");
-    console.log(home_js_1.debugref.position);
+    console.log(debugref.position);
     console.log("ROT:");
-    console.log(home_js_1.debugref.rotation);
+    console.log(debugref.rotation);
     console.log("SCALE:");
-    console.log(home_js_1.debugref.scale);
+    console.log(debugref.scale);
     console.log("INTENSITY:");
-    console.log(home_js_1.debugref.intensity);
+    console.log(debugref.intensity);
 });
 document.getElementById("togglebutton").addEventListener("click", function () {
     lighttoggled = !lighttoggled;
-    home_js_1.debugref.visible = lighttoggled;
-    home_js_1.cube.visible = lighttoggled;
+    debugref.visible = lighttoggled;
+    cube.visible = lighttoggled;
 });
 document.getElementById("toggledebugbutton").addEventListener("click", function () {
-    home_js_1.cube.visible = !home_js_1.cube.visible;
+    cube.visible = !cube.visible;
 });
 document.getElementById("debugrange").oninput = function (e) {
     var slider = e.target;
@@ -108,5 +106,5 @@ document.getElementById("debugrange").oninput = function (e) {
 };
 document.getElementById("debugintensity").oninput = function (e) {
     var slider = e.target;
-    home_js_1.debugref.intensity = parseFloat(slider.value) / 100;
+    debugref.intensity = parseFloat(slider.value) / 100;
 };

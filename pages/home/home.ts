@@ -1,4 +1,5 @@
 
+console.log("its ronnin mate")
 
 import * as THREE from 'three'
 // @ts-ignore
@@ -16,7 +17,7 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap
 // renderer.shadowMap.enabled = true
 
 renderer.setSize(window.innerWidth, window.innerHeight)
-document.getElementById('home').appendChild(renderer.domElement)
+document.getElementById("home").appendChild(renderer.domElement)
 
 
 const geometry: THREE.BoxGeometry = new THREE.BoxGeometry(1, 1, 0.2)

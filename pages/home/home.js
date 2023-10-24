@@ -1,9 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.debugref = exports.cube = void 0;
-var THREE = require("three");
+console.log("its ronnin mate");
+import * as THREE from 'three';
 // @ts-ignore
-var GLTFLoader_js_1 = require("three/addons/loaders/GLTFLoader.js");
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
 scene.background = new THREE.Color('#000000');
@@ -11,11 +9,11 @@ var renderer = new THREE.WebGLRenderer();
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 // renderer.shadowMap.enabled = true
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById('home').appendChild(renderer.domElement);
+document.getElementById("home").appendChild(renderer.domElement);
 var geometry = new THREE.BoxGeometry(1, 1, 0.2);
 var material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
-exports.cube = new THREE.Mesh(geometry, material);
-var loader = new GLTFLoader_js_1.GLTFLoader();
+export var cube = new THREE.Mesh(geometry, material);
+var loader = new GLTFLoader();
 loader.load('room.glb', function (gltf) {
     gltf.scene.traverse(function (node) {
         if (node.isMesh) {
@@ -54,7 +52,7 @@ function addObjectsToScene() {
     // scene.add(ambient)
     scene.add(monitorlight1);
     scene.add(monitorlight2);
-    scene.add(exports.cube);
+    scene.add(cube);
 }
 setInitialTransforms();
 addObjectsToScene();
@@ -85,4 +83,4 @@ window.addEventListener('mousemove', function (e) {
     camera.rotation.y += e.movementX * moveAmount;
     camera.rotation.x += e.movementY * moveAmount;
 });
-exports.debugref = light;
+export var debugref = light;

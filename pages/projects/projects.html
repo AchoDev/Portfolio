@@ -1,56 +1,62 @@
 
 
-<script type="module">
-
-function Project(props) {
-  return {
-    $template: '#project-template',
-    name: props.name,
-    desc: props.desc,
-    imgsrc: `./images/${props.image}.png`,
-    color: props.color,
-    text: props.color != null ? props.text : 'white',
-    mdpath: `./${props.image}/en.html`
-  }
-}
-
-class ProjectInfo {
-  name
-  image
-  color
-  mdpath
-
-  constructor(name, image, color, mdpath) {
-    this.name = name
-    this.image = image
-    this.color = color
-    this.mdpath = mdpath
-  }
-}
-
-let currentProject = new ProjectInfo()
-
-function openProjectPage(name, image, color, mdpath) {
-  this.currentTab = 'project-page'
-
-  fetch(mdpath)
-  .then((res) => res.text())
-  .then((text) => {
-    document.getElementById('current-project-content').innerHTML = text
-  })
-  .catch((e) => console.error(e));
-
-  console.log(color)
-
-  currentProject = new ProjectInfo(
-    name, image, color, mdpath
-  )
-}
-
-</script>
 
 <div id="projects" class="page">
 
+  <script type="module" defer init> 
+
+    import { createApp, reactive } from 'https://unpkg.com/petite-vue?module'    
+
+    function Project(props) {
+      return {
+        $template: '#project-template',
+        name: props.name,
+        desc: props.desc,
+        imgsrc: `./images/${props.image}.png`,
+      color: props.color,
+      text: props.color != null ? props.text : 'white',
+      mdpath: `./${props.image}/en.html`
+    }
+  }
+  
+  class ProjectInfo {
+    name
+    image
+    color
+    mdpath
+    
+    constructor(name, image, color, mdpath) {
+      this.name = name
+      this.image = image
+      this.color = color
+      this.mdpath = mdpath
+    }
+  }
+  
+  let currentProject = new ProjectInfo()
+  
+  function openProjectPage(name, image, color, mdpath) {
+    this.currentTab = 'project-page'
+    
+    fetch(mdpath)
+    .then((res) => res.text())
+    .then((text) => {
+      document.getElementById('current-project-content').innerHTML = text
+    })
+    .catch((e) => console.error(e));
+    
+    console.log(color)
+    
+    currentProject = new ProjectInfo(
+      name, image, color, mdpath
+      )
+    }
+    
+    createApp({
+      Project,
+      currentProject
+    }).mount()
+    </script>
 
   <center>
     <h1>Projects</h1>

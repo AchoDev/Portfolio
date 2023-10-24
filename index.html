@@ -13,10 +13,10 @@
 
   <script src="router.js" defer></script>
 
-</head>
+  <script>var exports = {}</script>
 
-<!-- import { createApp, reactive } from 'https://unpkg.com/petite-vue?module' -->
-<!-- createApp({vars}).mount() -->
+
+</head>
 
 <body>
   <nav>
@@ -36,7 +36,7 @@
       </ul>
   </nav>
 
-  <div id="content"></div>
+  <div id="content" v-scope></div>
 
 </body>
 
@@ -70,6 +70,8 @@
     width: 100%;
 
     height: 75px;
+
+    z-index: 1;
 
     /* background-color: rgb(255, 115, 0); */
   }
