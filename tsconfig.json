@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "outDir": "compiled/",
+    "module": "CommonJS",
+    "target": "ES5",
+    // "emitDeclarationOnly": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+  },
+  "exclude": ["node_modules/"]
+}
