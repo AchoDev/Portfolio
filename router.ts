@@ -30,14 +30,22 @@ let preloadedHTML: preloadedHTMLType;
 Array.from(document.getElementsByTagName("a")).forEach(element => {
   element.addEventListener('mouseenter', (e) => {
     console.log("loading " + element.href)
-    
-    if(preloadedHTML != null) preloadedHTML.controller.abort()
+
+    if(preloadedHTML != null) {
+      if(preloadedHTML.url === element.href) return
+
+      preloadedHTML.controller.abort()
+    } 
 
     const controller: AbortController = new AbortController()
     
+    const route = routes['/' + element.href.split("/")[3]]
+
+    // console.log(element.href.split("/"))
+
     preloadedHTML = {
       url: element.href,
-      promise: fetch(element.href, {signal: controller.signal}),
+      promise: fetch(route.page, {signal: controller.signal}),
       controller: controller,
       result: "",
     }
@@ -45,7 +53,7 @@ Array.from(document.getElementsByTagName("a")).forEach(element => {
     preloadedHTML.promise.then((res) => {
       console.log("loaded!!!")
       return res.text().then((t) => {
-        console.log(t)
+        // console.log(t)
         preloadedHTML.result = t
       })
     })
@@ -71,21 +79,40 @@ function handleRouteChange(event) {
   urlLocationHandler(event)
 }
 
+function timeout(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function urlLocationHandler(event?) {
   const route = routes[window.location.pathname]
 
   let html: string;
+  document.title = route.title
+  targetDiv.innerHTML = ""
 
   if(event != null && event.target.href === preloadedHTML.url) {
-    html = preloadedHTML.result
+    // html = preloadedHTML.result
+
+    if(preloadedHTML.result === "") {
+      await (await preloadedHTML.promise).text
+      console.log("aaa")
+      await timeout(100)
+      console.log("bbb")
+      console.log("promise fone")
+    }
+
+    console.log(preloadedHTML.result)
+
+    targetDiv.appendChild(
+      parseHTML(preloadedHTML.result)
+    )
   } else {
+    console.log("not the same man")
     html = await fetch(route.page).then((res) => res.text())
+    targetDiv.appendChild(parseHTML(html))
   }
 
 
-  document.title = route.title
-  targetDiv.innerHTML = ""
-  targetDiv.appendChild(parseHTML(html))
 }
 
 function parseHTML(input: string): HTMLDivElement {

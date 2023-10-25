@@ -2,18 +2,18 @@ console.log("its ronnin mate");
 import * as THREE from 'three';
 // @ts-ignore
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
 scene.background = new THREE.Color('#000000');
-var renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer();
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 // renderer.shadowMap.enabled = true
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("home").appendChild(renderer.domElement);
-var geometry = new THREE.BoxGeometry(1, 1, 0.2);
-var material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
-export var cube = new THREE.Mesh(geometry, material);
-var loader = new GLTFLoader();
+const geometry = new THREE.BoxGeometry(1, 1, 0.2);
+const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
+export const cube = new THREE.Mesh(geometry, material);
+const loader = new GLTFLoader();
 loader.load('room.glb', function (gltf) {
     gltf.scene.traverse(function (node) {
         if (node.isMesh) {
@@ -30,12 +30,12 @@ loader.load('room.glb', function (gltf) {
 });
 // lights
 // '#9A5FC0'
-var ambient = new THREE.AmbientLight(0xFFFFFF, 0.5);
-var light = new THREE.SpotLight('#FFFFFF', 35, 100, 200, 0.25);
+const ambient = new THREE.AmbientLight(0xFFFFFF, 0.5);
+const light = new THREE.SpotLight('#FFFFFF', 35, 100, 200, 0.25);
 light.shadow.bias = -0.0005;
 light.castShadow = true;
-var monitorlight1 = new THREE.RectAreaLight('#FFFFFF', 1, 10, 5);
-var monitorlight2 = new THREE.RectAreaLight('#FFFFFF', 1, 10, 5);
+const monitorlight1 = new THREE.RectAreaLight('#FFFFFF', 1, 10, 5);
+const monitorlight2 = new THREE.RectAreaLight('#FFFFFF', 1, 10, 5);
 function setInitialTransforms() {
     light.position.set(0, 4.67, 0);
     light.rotation.set(8, 3.1, 0);
@@ -56,7 +56,7 @@ function addObjectsToScene() {
 }
 setInitialTransforms();
 addObjectsToScene();
-var mouseclicked = false;
+let mouseclicked = false;
 function animate() {
     requestAnimationFrame(animate);
     if (!mouseclicked) {
@@ -66,15 +66,15 @@ function animate() {
     renderer.render(scene, camera);
 }
 animate();
-window.addEventListener('mousedown', function () {
+window.addEventListener('mousedown', () => {
     mouseclicked = true;
 });
-window.addEventListener('mouseup', function () {
+window.addEventListener('mouseup', () => {
     mouseclicked = false;
 });
-var moveAmount = 0.001;
-var smallMoveAmount = 0.0001;
-window.addEventListener('mousemove', function (e) {
+const moveAmount = 0.001;
+const smallMoveAmount = 0.0001;
+window.addEventListener('mousemove', (e) => {
     if (!mouseclicked) {
         camera.rotation.y -= e.movementX * smallMoveAmount;
         camera.rotation.x -= e.movementY * smallMoveAmount;
@@ -83,4 +83,4 @@ window.addEventListener('mousemove', function (e) {
     camera.rotation.y += e.movementX * moveAmount;
     camera.rotation.x += e.movementY * moveAmount;
 });
-export var debugref = light;
+export const debugref = light;

@@ -3,10 +3,11 @@
     // "outDir": ".",
     // "incremental": false,
     "module": "ES6",
-    "target": "ES5",
+    "target": "ES6",
     // "emitDeclarationOnly": true,
     // "noEmit": true,
     // "allowImportingTsExtensions": true,
+    "skipLibCheck": true,
   },
-  "exclude": ["node_modules/"]
+  "exclude": ["**/node_modules"]
 }

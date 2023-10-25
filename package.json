@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "@types/three": "^0.157.2",
-    "three": "^0.157.0"
+    "three": "^0.157.0",
+    "undici-types": "^5.26.5"
   }
 }
