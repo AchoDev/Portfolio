@@ -63,7 +63,7 @@ let originalCamZ = 3;
 let mouseclicked = false;
 let buttonPressed = false;
 const buttonMovement = [
-    [0, 4],
+    [0, 3.5],
     [-1.5, 3],
     [0, 3],
     [1.5, 3],
@@ -77,8 +77,8 @@ const buttonMovementZ = [
     3,
     null,
     null,
-    1.5,
-    4.5
+    0.5,
+    5
 ];
 Array.from(document.getElementById("movement").children).forEach((button, index) => {
     button.onmousedown = (e) => {
@@ -120,8 +120,8 @@ window.addEventListener('mousemove', (e) => {
     if (!mouseclicked) {
         camera.rotation.y -= e.movementX * smallMoveAmount;
         camera.rotation.x -= e.movementY * smallMoveAmount * 2;
-        camera.position.x -= e.movementX * smallMoveAmount * 5;
-        camera.position.y += e.movementY * smallMoveAmount * 5;
+        camera.position.x -= e.movementX * smallMoveAmount * 2;
+        camera.position.y += e.movementY * smallMoveAmount * 2;
         return;
     }
     camera.rotation.y += e.movementX * moveAmount;

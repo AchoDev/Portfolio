@@ -2,7 +2,7 @@
 #projects {
 
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
 
   margin-bottom: 100px;
 
@@ -11,20 +11,35 @@
 
   align-items: center;
   flex-direction: column;
+
+
 }
 
 #wrapper {
 
-  width: 95%;
+  width: 85%;
 
   flex-direction: row;
   flex-wrap: wrap;
 
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   /* align-items: start; */
   justify-content: left;
 
   gap: 50px;
+}
+
+@media only screen and (max-width: 1600px) {
+  #wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  #wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 h1 {
@@ -33,7 +48,7 @@ h1 {
 }
 
 .project {
-  width: 600px;
+  width: 100%;
   height: 300px;
   background: orange;
   position: relative;
@@ -69,6 +84,8 @@ h1 {
       padding: 0 20px 0 20px;
       /* color: orange; */
     
+
+
       -webkit-background-clip: text;
     }
   }

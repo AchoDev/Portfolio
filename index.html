@@ -13,7 +13,7 @@
 
   <script src="router.js" defer></script>
 
-  <script>var exports = {}</script>
+  <script>var exports = {}; </script>
 
 
 </head>
@@ -30,9 +30,9 @@
         <li>
           <a href="projects">Projects</a>
         </li>
-        <li>
+        <!-- <li>
           <a href="contact">Contact</a>
-        </li>
+        </li> -->
       </ul>
   </nav>
 
@@ -66,19 +66,28 @@
     display: flex;
     justify-content: right;
     align-items: center;
-    position: absolute;
+    position: fixed;
     width: 100%;
+
 
     height: 75px;
 
     z-index: 1;
-
+    /* transition: ease-in-out .3s; */
+    box-shadow: none;
     /* background-color: rgb(255, 115, 0); */
+
+    background: transparent;
   }
 
   ul {
     padding: 0;
     margin: 0;
+  }
+  
+  html:not([data-scroll='0'])  nav {
+    backdrop-filter: blur(10px);
+    background: linear-gradient(45deg, rgba(100, 48, 48, 0.458), rgba(63, 35, 79, 0.381));
   }
 
   nav ul {

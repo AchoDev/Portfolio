@@ -20,11 +20,27 @@ const routes = {
         title: 'Projects',
         page: 'pages/projects/projects.html'
     },
+    '/ultra-tictactoe': {
+        title: 'Ultra TicTacToe',
+        page: 'pages/projects/ultra-tictactoe/en.html'
+    },
+    '/kang2': {
+        title: 'Ultra TicTacToe',
+        page: 'pages/projects/kang2/en.html'
+    },
+    '/ama': {
+        title: 'AmA',
+        page: 'pages/projects/ama/en.html'
+    },
     '/contact': {
         title: 'Contact',
         page: 'pages/contact/contact.html'
     },
 };
+document.documentElement.dataset.scroll = window.scrollY.toString();
+document.addEventListener('scroll', (e) => {
+    document.documentElement.dataset.scroll = window.scrollY.toString();
+}, { passive: true });
 let preloadedHTML;
 Array.from(document.getElementsByTagName("a")).forEach(element => {
     element.addEventListener('mouseenter', (e) => {
@@ -80,7 +96,7 @@ function urlLocationHandler(event) {
             if (preloadedHTML.result === "") {
                 yield (yield preloadedHTML.promise).text;
                 console.log("aaa");
-                yield timeout(100);
+                yield timeout(5);
                 console.log("bbb");
                 console.log("promise fone");
             }

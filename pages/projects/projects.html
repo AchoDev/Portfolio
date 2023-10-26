@@ -12,51 +12,19 @@
         $template: '#project-template',
         name: props.name,
         desc: props.desc,
-        imgsrc: `./images/${props.image}.png`,
-      color: props.color,
-      text: props.color != null ? props.text : 'white',
-      mdpath: `./${props.image}/en.html`
+        imgsrc: props.path != "" ? `./pages/projects/${props.path}/main.png` : "",
+        color: props.color,
+        text: props.text || 'white',
+
+        path: props.path
+      }
     }
-  }
-  
-  class ProjectInfo {
-    name
-    image
-    color
-    mdpath
-    
-    constructor(name, image, color, mdpath) {
-      this.name = name
-      this.image = image
-      this.color = color
-      this.mdpath = mdpath
-    }
-  }
-  
-  let currentProject = new ProjectInfo()
-  
-  function openProjectPage(name, image, color, mdpath) {
-    this.currentTab = 'project-page'
-    
-    fetch(mdpath)
-    .then((res) => res.text())
-    .then((text) => {
-      document.getElementById('current-project-content').innerHTML = text
-    })
-    .catch((e) => console.error(e));
-    
-    console.log(color)
-    
-    currentProject = new ProjectInfo(
-      name, image, color, mdpath
-      )
-    }
-    
+
     createApp({
       Project,
-      currentProject
     }).mount()
-    </script>
+    
+  </script>
 
   <center>
     <h1>Projects</h1>
@@ -66,15 +34,13 @@
 
   <template id="project-template">
     
-    <div class="project" :style="`background: ${color}`" @click="openProjectPage(
-      name, imgsrc, color, mdpath
-    )">
+    <a class="project" :style="`background: ${color}`" :href="path">
 
       <div class="darkener">
         &nbsp;
       </div>
       
-      <img :src=imgsrc alt="AmA Logo">
+      <img v-if="imgsrc != ''" :src=imgsrc alt="Logo">
 
       <div class="name">
         <span :style="`background: ${color}; color: ${text}`">
@@ -84,7 +50,7 @@
       <div class="overlay">
         {{desc}}
       </div>
-    </div>
+    </a>
   </template>
 
   <div id="wrapper">
@@ -92,14 +58,14 @@
     <div v-scope="Project({
       name: 'AmA', 
       desc: 'AmA is one of the programs of all time',
-      image: 'ama',
+      path: 'ama',
       color: 'orange',
     })"></div>
 
     <div v-scope="Project({
       name: 'Ultra TicTacToe', 
       desc: 'Best game ever',
-      image: 'uttt',
+      path: 'ultra-tictactoe',
       color: 'rgb(250, 68, 55)',
 
     })"></div>
@@ -108,51 +74,51 @@
     <div v-scope="Project({
       name: 'Kang2', 
       desc: 'Best programming language',
-      image: 'kang2',
+      path: 'kang2',
       color: 'linear-gradient(0.9turn, rgb(255, 115, 0), red)',
     })"></div>
 
     <div v-scope="Project({
       name: 'YOURanimeList', 
       desc: 'list',
-      image: 'yal',
+      path: 'yal',
       color: 'rgba(91,152,213,255)',
     })"></div>
 
     <div v-scope="Project({
       name: 'Lumina Engine', 
       desc: 'pygame engine',
-      image: '',
+      path: '',
       color: 'rgb(152, 68, 212)',
     })"></div>
 
 
     <div v-scope="Project({
-      name: 'AchoMatico-Launcher', 
+      name: 'AM-Launcher', 
       desc: 'launcher',
-      image: '',
-      color: 'blue',
+      path: 'am-launcher',
+      color: '#7092be',
     })"></div>
 
     <div v-scope="Project({
       name: 'Yo-Masta-Nag', 
       desc: 'pygame game',
-      image: '',
+      path: '',
       color: 'rgb(54, 199, 56)',
     })"></div>
 
     <div v-scope="Project({
       name: 'Banana World', 
       desc: 'unity game',
-      image: '',
+      path: '',
       color: 'rgb(255, 226, 61)',
       text: 'black',
     })"></div>
 
     <div v-scope="Project({
-      name: 'Painter Super Yacht Finishing', 
+      name: 'PSY Finishing', 
       desc: 'website',
-      image: '',
+      path: '',
       color: 'white',
       text: 'black',
     })"></div>
