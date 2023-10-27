@@ -1,17 +1,281 @@
 
 <div id="about" class ="page">
+
+  <script type="module">
+    import { createApp, reactive } from 'https://unpkg.com/petite-vue?module'
+
+    function Skill(props) {
+      return {
+        $template: '#skills-template',
+        name: props.name,
+        img: `pages/about/images/${props.img}`,
+        color: props.color,
+        projects: props.projects,
+      }
+    }
+
+    const projects = {
+      ama: {
+        name: 'AmA',
+        color: 'orange',
+        path: 'ama'
+      },
+
+      uttt: {
+        name: 'Ultra TicTacToe',
+        color: 'blue',
+        path: 'ultra-tictactoe'
+      },
+
+      shopup: {
+        name: 'Shop-Up',
+        color: 'green',
+        path: 'shopup'
+      },
+
+      kang2: {
+        name: 'Kang2',
+        color: 'orange',
+        path: 'kang2'
+      },
+
+      yal: {
+        name: 'YOURAnimeList',
+        color: 'lightblue',
+        path: 'yal'
+      },
+
+      lumina: {
+        name: 'Lumina Engine',
+        color: 'purple',
+        path: 'lumina'
+      },
+
+      amlauncher: {
+        name: 'AM-Launcher',
+        color: 'blue',
+        path: 'am-launcher'
+      },
+
+      ymn: {
+        name: 'Yo-Masta-Nag',
+        color: 'green',
+        path: 'ymn'
+      },
+
+      bw: {
+        name: 'Banana World',
+        color: 'yellow',
+        path: 'bw'
+      },
+
+      portfolio: {
+        name: 'This website',
+        color: 'purple',
+        path: 'portfolio'
+      }
+    }
+
+
+    createApp({
+      Skill,
+      ...projects,
+      
+    }).mount()
+  </script>
+
   <h1>About Me</h1>
 
   <h3>Hello!</h3>
 
   <p>I am Ahmed Asi, also known as AchoDev. I'm passionate about many areas of programming. I express my passion through all my projects that I've spent countless hours meticulously and carefully crafting.</p>
 
-  <p>I have a strong educational foundation in my field, as I study computer science at BHH in Hamburg in parallel to training to become a software developer one day. I'm very well versed in a range of technologies, tools and programming languages. More in :: Skills. </p>
+  <p>I have a strong educational foundation in my field, as I study computer science at BHH in Hamburg in parallel to training to become a software developer one day. I'm very well versed in a range of technologies, tools and programming languages.</p>
+
+
+  <h2>Skills</h2>
+
+  <div id="skills">
+
+    <template id="skills-template">
+      <div class="skill" :style="`background: ${color}`">
+        <img :src="`pages/about/images/${img}`" alt="" srcset="">
+      
+        <span> {{name}} </span>
+
+        <div>
+          <span>Used in:</span>
+
+          <div v-for="project in projects">
+            <a :href="`pages/${project.path}/en.html`">
+              <div :style="`background: ${project.color}`">
+                <img :src="`pages/about/projects/${project.path}.png`">
+                <span> {{project.name}} </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <div v-scope="Skill({
+      name: 'Flutter',
+      img: 'flutter.png',
+      color: 'cyan',
+      projects: [
+        uttt, shopup
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'Dart',
+      img: 'dart.png',
+      color: 'cyan',
+      projects: [
+        uttt, shopup
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'SocketIO',
+      img: 'socketio.png',
+      color: 'white',
+      projects: [
+        uttt
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'JavaScript',
+      img: 'js.png',
+      color: 'yellow',
+      projects: [
+        kang2, ama, yal, amlauncher, 
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'TypeScript',
+      img: 'ts.png',
+      color: 'blue',
+      projects: [
+        amlauncher, portfolio
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'MongoDB',
+      img: 'mongodb.png',
+      color: 'green',
+      projects: [
+        yal
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'ThreeJS',
+      img: 'ts.png',
+      color: 'blue',
+      projects: [
+        portfolio
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'ElectronJS',
+      img: 'electron.png',
+      color: 'blue',
+      projects: [
+        amlauncher, yal, ama
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'VueJS',
+      img: 'vue.png',
+      color: 'green',
+      projects: [
+        portfolio
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'Python',
+      img: 'python.png',
+      color: 'green',
+      projects: [
+        lumina, ymn
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'MongoDB',
+      img: 'mongodb.png',
+      color: 'green',
+      projects: [
+        yal
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'Unity-Engine',
+      img: 'mongodb.png',
+      color: 'white',
+      projects: [
+        bw
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'C#',
+      img: 'cs.png',
+      color: 'green',
+      projects: [
+        bw
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'Docker',
+      img: 'docker.png',
+      color: 'green',
+      projects: [
+        bw
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'Rust',
+      img: 'rust.png',
+      color: 'orange',
+      projects: [
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'C',
+      img: 'c.png',
+      color: 'blue',
+      projects: [
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'C++',
+      img: 'cpp.png',
+      color: 'blue',
+      projects: [
+      ]
+    })"></div>
+    
+
+
+  </div>
 
   <!-- <p>I already knew years ago, that will become a software developer. Before even writing a single line of code or knowing anything about the most abundant languages and-or tools used, I felt a burning desire to write something special. So one day I found out about :: Scratch. After a bit of playing around, I fell in love with it. Since Scratch has a very gentle learning curve, it never felt hard to make anything. After being satisfied with the amount of theoretical knowledge I was able to aquire from playing around, I began my first real Project. I was basically a copy of a popular Indie Game. After a couple of stressful weeks, I finished the game with only a day left to spare, because the game was featured on an open house day at my school.</p> -->
 
-  <p>What sets me apart is my relentless pursuit of excellence, attention to detail, and a dedication to continually expand my knowledge. I'm not just a programmer; I'm a problem solver, a lifelong learner, and a team player. ändern noch weil cgpt kopie bhd</p>
+  <!-- <p>What sets me apart is my relentless pursuit of excellence, attention to detail, and a dedication to continually expand my knowledge. I'm not just a programmer; I'm a problem solver, a lifelong learner, and a team player. ändern noch weil cgpt kopie bhd</p> -->
 
-  <p>Outside of coding, I have other hobbies, such as reading</p>
+  <p>Outside of coding, I have other hobbies too. I love reading. I read every day, as much as I can, with lots of different genres that entice me, especially thriller and nonfiction. Playing piano is another hobby of mine. To have an instrument and learning to play music on it is something very important to me. Even if I didn't have any fun, I'd do so, but I love the piano aswell. Like reading, it's something I practice each and every day without fail.</p>
 
 </div>
