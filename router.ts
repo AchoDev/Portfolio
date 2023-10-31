@@ -115,24 +115,20 @@ async function urlLocationHandler(event?) {
 
     if(preloadedHTML.result === "") {
       await (await preloadedHTML.promise).text
-      console.log("aaa")
       await timeout(5)
-      console.log("bbb")
-      console.log("promise fone")
     }
-
-    console.log(preloadedHTML.result)
-
+    
+    
     targetDiv.appendChild(
       parseHTML(preloadedHTML.result)
-    )
-  } else {
-    console.log("not the same man")
-    html = await fetch(route.page).then((res) => res.text())
-    targetDiv.appendChild(parseHTML(html))
+      )
+    } else {
+      console.log("not the same man")
+      html = await fetch(route.page).then((res) => res.text())
+      console.log(html)
+      // debugger;
+      targetDiv.appendChild(parseHTML(html))
   }
-
-
 }
 
 function parseHTML(input: string): HTMLDivElement {
@@ -151,7 +147,8 @@ function parseHTML(input: string): HTMLDivElement {
     
     parsedHTML.insertBefore(newScript, parsedHTML.firstChild)
     
-    console.log(newScript)
+    console.log("cock")
+    console.log(element)
   })
 
   return parsedHTML

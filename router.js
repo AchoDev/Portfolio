@@ -95,17 +95,15 @@ function urlLocationHandler(event) {
             // html = preloadedHTML.result
             if (preloadedHTML.result === "") {
                 yield (yield preloadedHTML.promise).text;
-                console.log("aaa");
                 yield timeout(5);
-                console.log("bbb");
-                console.log("promise fone");
             }
-            console.log(preloadedHTML.result);
             targetDiv.appendChild(parseHTML(preloadedHTML.result));
         }
         else {
             console.log("not the same man");
             html = yield fetch(route.page).then((res) => res.text());
+            console.log(html);
+            // debugger;
             targetDiv.appendChild(parseHTML(html));
         }
     });
@@ -121,7 +119,8 @@ function parseHTML(input) {
         newScript.type = element.type;
         newScript.defer = element.defer;
         parsedHTML.insertBefore(newScript, parsedHTML.firstChild);
-        console.log(newScript);
+        console.log("cock");
+        console.log(element);
     }));
     return parsedHTML;
 }

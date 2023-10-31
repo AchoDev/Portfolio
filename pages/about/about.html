@@ -99,24 +99,98 @@
 
     <template id="skills-template">
       <div class="skill" :style="`background: ${color}`">
-        <img :src="`pages/about/images/${img}`" alt="" srcset="">
-      
-        <span> {{name}} </span>
 
-        <div>
+        <div class="top">
+          <img :src="img" alt="logo image" srcset="">
+          <span> {{name}} </span>
+        </div>
+
+        <div class="used-in" v-if="projects.length !== 0">
           <span>Used in:</span>
 
-          <div v-for="project in projects">
-            <a :href="`pages/${project.path}/en.html`">
-              <div :style="`background: ${project.color}`">
-                <img :src="`pages/about/projects/${project.path}.png`">
-                <span> {{project.name}} </span>
-              </div>
-            </a>
+          <div class="project-wrapper">
+
+            <div v-for="project in projects">
+              <a :href="project.path">
+                <div :style="`background: ${project.color}`">
+                  <img :src="`pages/about/projects/${project.path}.png`">
+                  <span> {{project.name}} </span>
+                </div>
+              </a>
+            </div>
+
           </div>
+
         </div>
       </div>
     </template>
+
+    <style>
+      #skills {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(3, 1fr);  
+      }
+
+      .skill {
+        width: 300px;
+        min-height: 70px;
+        display: flex;
+        flex-direction: column;
+
+        padding: 10px;
+
+        border-radius: 15px;
+      }
+
+      .top {
+        display: flex;
+        height: 100%;
+      }
+
+      .top span {
+        font-size: 20pt;
+        width: 100%;
+        text-align: center;
+      }
+
+      .top img {
+        width: auto;
+        height: auto;
+
+        max-width: 40px;
+        max-height: 40px;
+
+        border-radius: 5px;
+      }
+
+      .project-wrapper{
+        display: flex;
+        overflow-x: scroll;
+
+
+      }
+
+      .project-wrapper::-webkit-scrollbar {
+        height: 7px;
+      }
+
+      .project-wrapper::-webkit-scrollbar-track {
+        background: none;
+      }
+
+      .project-wrapper::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.486);
+      }
+
+      .project-wrapper::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.836);
+      }
+
+      .project-wrapper div {
+        min-width: 100px;
+      }
+    </style>
 
     <div v-scope="Skill({
       name: 'Flutter',
@@ -174,7 +248,7 @@
 
     <div v-scope="Skill({
       name: 'ThreeJS',
-      img: 'ts.png',
+      img: 'threejs.png',
       color: 'blue',
       projects: [
         portfolio
@@ -219,7 +293,7 @@
 
     <div v-scope="Skill({
       name: 'Unity-Engine',
-      img: 'mongodb.png',
+      img: 'unity.png',
       color: 'white',
       projects: [
         bw
@@ -267,9 +341,7 @@
       projects: [
       ]
     })"></div>
-    
-
-
+  
   </div>
 
   <!-- <p>I already knew years ago, that will become a software developer. Before even writing a single line of code or knowing anything about the most abundant languages and-or tools used, I felt a burning desire to write something special. So one day I found out about :: Scratch. After a bit of playing around, I fell in love with it. Since Scratch has a very gentle learning curve, it never felt hard to make anything. After being satisfied with the amount of theoretical knowledge I was able to aquire from playing around, I began my first real Project. I was basically a copy of a popular Indie Game. After a couple of stressful weeks, I finished the game with only a day left to spare, because the game was featured on an open house day at my school.</p> -->
@@ -277,5 +349,7 @@
   <!-- <p>What sets me apart is my relentless pursuit of excellence, attention to detail, and a dedication to continually expand my knowledge. I'm not just a programmer; I'm a problem solver, a lifelong learner, and a team player. ändern noch weil cgpt kopie bhd</p> -->
 
   <p>Outside of coding, I have other hobbies too. I love reading. I read every day, as much as I can, with lots of different genres that entice me, especially thriller and nonfiction. Playing piano is another hobby of mine. To have an instrument and learning to play music on it is something very important to me. Even if I didn't have any fun, I'd do so, but I love the piano aswell. Like reading, it's something I practice each and every day without fail.</p>
+
+  
 
 </div>
