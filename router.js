@@ -32,9 +32,17 @@ const routes = {
         title: 'AmA',
         page: 'pages/projects/ama/en.html'
     },
+    '/yo-masta-nag': {
+        title: 'AmA',
+        page: 'pages/projects/yo-masta-nag/en.html'
+    },
     '/contact': {
         title: 'Contact',
         page: 'pages/contact/contact.html'
+    },
+    '/error': {
+        title: 'Not Found',
+        page: 'pages/not-found.html'
     },
 };
 document.documentElement.dataset.scroll = window.scrollY.toString();
@@ -86,8 +94,9 @@ function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 function urlLocationHandler(event) {
+    var _a;
     return __awaiter(this, void 0, void 0, function* () {
-        const route = routes[window.location.pathname];
+        const route = (_a = routes[window.location.pathname]) !== null && _a !== void 0 ? _a : routes['/error'];
         let html;
         document.title = route.title;
         targetDiv.innerHTML = "";

@@ -1,12 +1,135 @@
 
-
-<div>
-  <div id="bar">
-    <button id="download"></button> 
-    <button id="github">Github Repo</button>
-    <!-- <button id="web"></button> -->
-
-    <div>Created on DATE</div>
-    <div>Published on DATE</div>
+<template id="banner-template">
+  <div id="container">
+  
+    <h1 id="title">
+      {{title}}
+    </h1>
+  
+    <div id="bar">
+      <button id="download">
+        <img src="pages/projects/download.png" alt="Download">
+        DOWNLOAD
+      </button> 
+      <button id="github">
+        <img src="pages/projects/github.png" alt="Download">
+        Github Repo
+      </button>
+      <!-- <button id="web"></button> -->
+  
+      <div id="created-on">
+        Created on
+        <span class="date">
+          {{createdOn}}
+        </span>
+      </div>
+      <div id="published-on">
+        Published on
+        <span class="date">
+          {{publishedOn}}
+        </span>
+      </div>
+    </div>
   </div>
-</div>
+</template>
+
+<style>
+
+  .warning {
+    background: red;
+    color: white;
+    height: 50px;
+
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    border: 2px dashed yellow;
+    font-size: 15pt;
+  }
+
+  #container {
+    width: 100%;
+    height: 400px;
+    background: red;
+    position: relative;
+
+    overflow: visible;
+  }
+
+  #title {
+    position: absolute;
+    bottom: 100px;
+    left: 25px;
+
+    text-align: left;
+    z-index: 1;
+    margin: 0;
+  }
+
+  #bar {
+    position: absolute;
+    bottom: 0;
+    /* left: 20px; */
+
+    width: 100%;
+    height: 200px;
+
+    align-items: end;
+
+    padding: 25px;
+
+    display: flex;
+    gap: 30px;
+
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.788));
+  }
+
+  #bar #created-on, #published-on {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #bar button {
+    width: 175px;
+    height: 50px;
+    font-size: 15pt;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+
+    transition: ease-out .1s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  #bar button img {
+    width: 25px;
+    height: auto;
+  }
+
+  #bar button:hover {
+    transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+
+  #bar button:active {
+    transform: scale(1.05);
+  }
+
+  #bar #download {
+    background: linear-gradient(120deg, rgb(35, 111, 250), rgb(98, 166, 255));
+  }
+
+  #bar #download img {
+    filter: invert(100%);
+  }
+
+  #bar #github {
+    background: black;
+  }
+
+</style>

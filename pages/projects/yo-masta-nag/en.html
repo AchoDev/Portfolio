@@ -1,14 +1,24 @@
 
+
 <script type="module" src="pages/projects/project-page-default.js"></script>
 
+<div id="banner"></div>
 
-<div v-scope="Activity({
-  name: 'good title',
-  content: 'this is a very exciting activity',
-  image: 'https://webapps.stackexchange.com/users/91549/mike-stratton'
+<div v-scope="Banner({
+  title: 'Yo-Masta-Nag',
+  download: 'some link',
+  github: 'git link',
+  createdOn: 'i dont know man',
+  publishedOn: 'still in dev'
 })"></div>
 
-<h1>YO MASTA NAG</h1>
+<div id="activity"></div>
+
+<!-- <div v-scope="Activity({
+  title: 'good title',
+  content: 'this is a very exciting activity',
+  image: 'https://webapps.stackexchange.com/users/91549/mike-stratton'
+})"></div> -->v bvb
 
 <blockquote class="warning">
   This Project is still under development! <!-- See if there are any updates in the <button>info</button> section -->

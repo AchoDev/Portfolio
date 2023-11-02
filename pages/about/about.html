@@ -111,7 +111,7 @@
           <div class="project-wrapper">
 
             <div v-for="project in projects">
-              <a :href="project.path">
+              <a class="project-reference" :href="project.path">
                 <div :style="`background: ${project.color}`">
                   <img :src="`pages/about/projects/${project.path}.png`">
                   <span> {{project.name}} </span>
@@ -132,7 +132,18 @@
         grid-template-columns: repeat(3, 1fr);  
       }
 
+      .project-reference div {
+        display: flex;
+        justify-content: center;
+        color: white;
+        text-decoration: none !important;
+        border-radius: 10px;
+      }
+
       .skill {
+
+        
+
         width: 300px;
         min-height: 70px;
         display: flex;

@@ -26,9 +26,19 @@ const routes = {
     page: 'pages/projects/ama/en.html'
   },
 
+  '/yo-masta-nag': {
+    title: 'AmA',
+    page: 'pages/projects/yo-masta-nag/en.html'
+  },
+
   '/contact': {
     title: 'Contact',
     page: 'pages/contact/contact.html'
+  },
+
+  '/error': {
+    title: 'Not Found',
+    page: 'pages/not-found.html'
   },
 }
 
@@ -104,7 +114,7 @@ function timeout(ms) {
 }
 
 async function urlLocationHandler(event?) {
-  const route = routes[window.location.pathname]
+  const route = routes[window.location.pathname] ?? routes['/error']
 
   let html: string;
   document.title = route.title
