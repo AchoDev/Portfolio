@@ -1,9 +1,26 @@
 <!-- <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
 <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script> -->
 
-<script>hljs.highlightAll()</script>
+<script type="module" src="pages/projects/project-page-default.js"></script>
 
-<h1>Ultra TicTacToe</h1>
+<div id="banner"></div>
+
+<div v-scope="Banner({
+  title: 'Ultra TicTacToe',
+  download: 'some link',
+  github: 'git link',
+  createdOn: 'i dont know man',
+  publishedOn: 'on one particular day'
+})"></div>
+
+<div id="activity"></div>
+
+
+
+
+<!-- <script>hljs.highlightAll()</script> -->
+
+<!-- <h1>Ultra TicTacToe</h1> -->
 
 
 <img src="./uttt/menu.gif" alt="Menu Screen">
@@ -670,3 +687,5 @@ void checkWinner() {
 <img src="uttt/classroom.png" alt="Classroom Map">
 
 </details>
+
+<footer></footer>

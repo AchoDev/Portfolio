@@ -23,7 +23,7 @@
 
       uttt: {
         name: 'Ultra TicTacToe',
-        color: 'blue',
+        color: 'rgb(250, 68, 55)',
         path: 'ultra-tictactoe'
       },
 
@@ -35,44 +35,44 @@
 
       kang2: {
         name: 'Kang2',
-        color: 'orange',
+        color: 'linear-gradient(0.9turn, rgb(255, 115, 0), red)',
         path: 'kang2'
       },
 
       yal: {
         name: 'YOURAnimeList',
-        color: 'lightblue',
-        path: 'yal'
+        color: 'rgb(91, 152, 213)',
+        path: 'youranimelist'
       },
 
       lumina: {
         name: 'Lumina Engine',
-        color: 'purple',
+        color: 'rgb(152, 68, 212)',
         path: 'lumina'
       },
 
       amlauncher: {
         name: 'AM-Launcher',
-        color: 'blue',
+        color: 'linear-gradient(120deg, rgb(121, 149, 184), rgb(61, 116, 235))',
         path: 'am-launcher'
       },
 
       ymn: {
         name: 'Yo-Masta-Nag',
-        color: 'green',
-        path: 'ymn'
+        color: 'rgb(54, 199, 56)',
+        path: 'yo-masta-nag'
       },
 
       bw: {
         name: 'Banana World',
-        color: 'yellow',
+        color: 'rgb(255, 226, 61)',
         path: 'bw'
       },
 
       portfolio: {
         name: 'This website',
-        color: 'purple',
-        path: 'portfolio'
+        color: 'linear-gradient( 100deg, #21398f, #6c2a82, #7d1414 )',
+        path: '/'
       }
     }
 
@@ -132,26 +132,54 @@
         grid-template-columns: repeat(3, 1fr);  
       }
 
+    
       .project-reference div {
         display: flex;
+        flex-shrink: 0;
         justify-content: center;
         color: white;
         text-decoration: none !important;
         border-radius: 10px;
+
+        min-width: 100px;
+
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      .project-reference {
+        text-decoration: none;
+        width: 100%;
+
+        /* margin-left: 30px;
+        margin-right: 30px; */
+      }
+
+      .project-reference span {
+        text-wrap: nowrap;
       }
 
       .skill {
-
-        
-
         width: 300px;
-        min-height: 70px;
+        min-height: 70;
+
+
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
+        
+        gap: 10px;
 
         padding: 10px;
 
         border-radius: 15px;
+
+        transition: ease-out .1s;
+      }
+
+      .skill:hover {
+        transform: scale(1.02);
+        box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
       }
 
       .top {
@@ -173,13 +201,16 @@
         max-height: 40px;
 
         border-radius: 5px;
+
+        filter: drop-shadow(0 0 0.75rem black);
       }
 
       .project-wrapper{
         display: flex;
-        overflow-x: scroll;
-
-
+        gap: 10px;
+        overflow: scroll;
+        flex-shrink: 0;
+        padding-bottom: 15px;
       }
 
       .project-wrapper::-webkit-scrollbar {
@@ -198,15 +229,16 @@
         background: rgba(0, 0, 0, 0.836);
       }
 
-      .project-wrapper div {
-        min-width: 100px;
+      .project-wrapper::-webkit-scrollbar-corner {
+        display: none;
       }
+
     </style>
 
     <div v-scope="Skill({
       name: 'Flutter',
       img: 'flutter.png',
-      color: 'cyan',
+      color: '#5fc9f8',
       projects: [
         uttt, shopup
       ]
@@ -215,7 +247,7 @@
     <div v-scope="Skill({
       name: 'Dart',
       img: 'dart.png',
-      color: 'cyan',
+      color: '#0079b3',
       projects: [
         uttt, shopup
       ]
@@ -233,7 +265,7 @@
     <div v-scope="Skill({
       name: 'JavaScript',
       img: 'js.png',
-      color: 'yellow',
+      color: '#f0dc4e',
       projects: [
         kang2, ama, yal, amlauncher, 
       ]
@@ -242,7 +274,7 @@
     <div v-scope="Skill({
       name: 'TypeScript',
       img: 'ts.png',
-      color: 'blue',
+      color: '#2d79c7',
       projects: [
         amlauncher, portfolio
       ]
@@ -251,7 +283,7 @@
     <div v-scope="Skill({
       name: 'MongoDB',
       img: 'mongodb.png',
-      color: 'green',
+      color: '#4eaa40',
       projects: [
         yal
       ]
@@ -260,7 +292,7 @@
     <div v-scope="Skill({
       name: 'ThreeJS',
       img: 'threejs.png',
-      color: 'blue',
+      color: 'white',
       projects: [
         portfolio
       ]
@@ -269,7 +301,7 @@
     <div v-scope="Skill({
       name: 'ElectronJS',
       img: 'electron.png',
-      color: 'blue',
+      color: '#272a37',
       projects: [
         amlauncher, yal, ama
       ]
@@ -278,7 +310,7 @@
     <div v-scope="Skill({
       name: 'VueJS',
       img: 'vue.png',
-      color: 'green',
+      color: '#3fb984',
       projects: [
         portfolio
       ]
@@ -287,25 +319,16 @@
     <div v-scope="Skill({
       name: 'Python',
       img: 'python.png',
-      color: 'green',
+      color: '#3474a4',
       projects: [
         lumina, ymn
       ]
     })"></div>
 
     <div v-scope="Skill({
-      name: 'MongoDB',
-      img: 'mongodb.png',
-      color: 'green',
-      projects: [
-        yal
-      ]
-    })"></div>
-
-    <div v-scope="Skill({
       name: 'Unity-Engine',
       img: 'unity.png',
-      color: 'white',
+      color: 'black',
       projects: [
         bw
       ]
@@ -314,7 +337,7 @@
     <div v-scope="Skill({
       name: 'C#',
       img: 'cs.png',
-      color: 'green',
+      color: '#a27add',
       projects: [
         bw
       ]
@@ -323,7 +346,7 @@
     <div v-scope="Skill({
       name: 'Docker',
       img: 'docker.png',
-      color: 'green',
+      color: '#099cec',
       projects: [
         bw
       ]
@@ -332,7 +355,7 @@
     <div v-scope="Skill({
       name: 'Rust',
       img: 'rust.png',
-      color: 'orange',
+      color: '#f74b00',
       projects: [
       ]
     })"></div>
@@ -340,7 +363,7 @@
     <div v-scope="Skill({
       name: 'C',
       img: 'c.png',
-      color: 'blue',
+      color: '#649ad2',
       projects: [
       ]
     })"></div>
@@ -348,7 +371,7 @@
     <div v-scope="Skill({
       name: 'C++',
       img: 'cpp.png',
-      color: 'blue',
+      color: '#649ad2',
       projects: [
       ]
     })"></div>

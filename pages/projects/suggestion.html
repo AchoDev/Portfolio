@@ -1,0 +1,25 @@
+
+<template id="suggestion-template">
+    
+  <a class="project" :style="`background: ${color}`" :href="path">
+
+    <div class="darkener">
+      &nbsp;
+    </div>
+    
+    <img v-if="imgsrc != ''" :src=imgsrc alt="Logo">
+
+    <div class="name">
+      <span :style="`background: ${color}; color: ${text}`">
+        {{ name }}
+      </span>
+    </div>
+    <div class="overlay">
+      {{desc}}
+    </div>
+  </a>
+
+  <style>
+    
+  </style>
+</template>

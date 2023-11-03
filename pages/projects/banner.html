@@ -7,14 +7,14 @@
     </h1>
   
     <div id="bar">
-      <button id="download">
+      <a id="download" :href="download" target="_blank">
         <img src="pages/projects/download.png" alt="Download">
         DOWNLOAD
-      </button> 
-      <button id="github">
+      </a> 
+      <a id="github" :href="github" target="_blank">
         <img src="pages/projects/github.png" alt="Download">
         Github Repo
-      </button>
+      </a>
       <!-- <button id="web"></button> -->
   
       <div id="created-on">
@@ -35,6 +35,57 @@
 
 <style>
 
+  #preview-image {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.747);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    top: 0;
+    left: 0;
+
+    opacity: 0;
+    transition: ease-out .2s;
+
+    z-index: 21;
+
+  }
+
+  #preview-image img {
+    aspect-ratio: 16 / 9;
+    width: 70%;
+
+    border-radius: 15px;
+
+    pointer-events: none;
+  }
+  
+  #preview-images {
+    
+    padding-top: 50px;
+    
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  #preview-images img {
+    border-radius: 15px;
+    cursor: pointer;
+    aspect-ratio: 16 / 9;
+    height: 200px;
+
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) .4s;
+  }
+
+  #preview-images img:hover {
+    transform: scale(1.05);
+  }
+
   .warning {
     background: red;
     color: white;
@@ -45,6 +96,108 @@
     border-radius: 10px;
     border: 2px dashed yellow;
     font-size: 15pt;
+  }
+
+  p {
+
+    padding-left: 13% !important;
+    padding-right: 13% !important;
+
+    max-width: 100% !important;
+
+
+    /* width: 100%; */
+    /* display: flex; */
+    text-align: justify;
+  }
+
+  .list {
+    display: flex;
+    justify-content: center;
+
+    text-align: center;
+  }
+
+  .codewrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  #roadmap {
+    display: flex;
+    justify-content: center;
+  
+    font-size: 17pt;
+  }
+
+  #roadmap ul {
+    list-style-type: none;
+    text-align: center;
+
+    list-style-type: '⬜';
+  }
+
+  #roadmap li {
+    padding-left: 10px;
+  }
+
+  #roadmap .checked {
+    list-style-type: '✅';
+  }
+
+  #htmlViewer {
+    width: auto;
+  }
+
+  .list > * {
+    width: 200px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 50px;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  h2::before {
+    content: "";
+    /* width: 100%; */
+    height: 10px;
+    
+    margin-left: 150px;
+    margin-right: 150px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.492);
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+
+    height: auto;
+    margin-bottom: 50px;
+
+    padding: 50px;
+  }
+
+  footer > div > div a{
+    height: 250px !important;
+    width: 480px !important;
+  }
+
+  footer .name {
+    margin-bottom: 10px;
   }
 
   #container {
@@ -72,7 +225,7 @@
     /* left: 20px; */
 
     width: 100%;
-    height: 200px;
+    height: 170px;
 
     align-items: end;
 
@@ -81,7 +234,7 @@
     display: flex;
     gap: 30px;
 
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.788));
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.599));
   }
 
   #bar #created-on, #published-on {
@@ -89,7 +242,7 @@
     flex-direction: column;
   }
 
-  #bar button {
+  #bar a {
     width: 175px;
     height: 50px;
     font-size: 15pt;
@@ -104,19 +257,21 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+
+    text-decoration: none;
   }
 
-  #bar button img {
+  #bar a img {
     width: 25px;
     height: auto;
   }
 
-  #bar button:hover {
+  #bar a:hover {
     transform: scale(1.1);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   }
 
-  #bar button:active {
+  #bar a:active {
     transform: scale(1.05);
   }
 

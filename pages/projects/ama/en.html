@@ -1,11 +1,38 @@
 
-<h1>AmA</h1>
+<script type="module" src="pages/projects/project-page-default.js"></script>
 
-<blockquote class="warning">
-  This Project is still under development! <!-- See if there are any updates in the <button>info</button> section -->
-</blockquote>
+<div id="banner"></div>
 
-<h2>Introduction</h2>
+<div v-scope="Banner({
+  title: 'AmA',
+  download: 'some link',
+  github: 'https://github.com/AchoDev/AmA',
+  createdOn: '18.10.2022',
+  publishedOn: '3.11.2022'
+})"></div>
+
+<div id="activity"></div>
+
+<!-- <blockquote class="warning">
+  This Project is still under development!
+</blockquote> -->
+
+<!-- v-show="imagePreview" -->
+
+<div id="preview-image" @click="imagePreview = false" :style="`
+  transform: scale(${imagePreview ? '1' : '1.3'});
+  opacity: ${imagePreview ? '1' : '0'};
+  pointer-events: ${imagePreview ? 'all' : 'none'};
+  `">
+</div>
+
+<div id="preview-images">
+  <img @click="imagePreview = true" src="pages/projects/ama/good.png" alt="good">
+  <img @click="imagePreview = true" src="pages/projects/ama/good.png" alt="good">
+  <img @click="imagePreview = true" src="pages/projects/ama/good.png" alt="good">
+</div>
+
+<h2>Description</h2>
 
 <p>AmA is a Desktop Application, which acts as a digital vocabulary book. You can add as many words and notes, edit them and give them tags to further organize all the words you learned. Gone are the days of tirelessly writing down each word, trying desperetaly to organize them somehow, while inevitebly awaiting the day you run out of space, IF you use AmA!</p>
 
@@ -15,7 +42,9 @@
 
 <h3>Vocabulary</h3>
 
-<p><strong>The top row</strong> consists of each letter in your alphabet. When you click on one of them, you'll only be able to see words that start with that exact letter</p>
+<p>
+  <b>The top row</b> consists of each letter in your alphabet. When you click on one of them, you'll only be able to see words that start with that exact letter
+</p>
 
 <p><strong>To create a new word</strong>, press on the <strong>+</strong> icon in the bottom right corner. After that, enter the desired word in both languages, select a tag if you need one, and press <strong>"Add word"</strong></p>
 
@@ -41,22 +70,33 @@
 
 <p>AmA is an Electron application. Takes HTML&&CSS files and bundles them together with the Chromium browser as an executable. So under the hood, it's basically just a website. There are no frontend libraries or Typescript used, which was a mistake. The app does not connect to a server, instead everything is saved locally in three files:</p>
 
-<ol>
-  <li><strong>dictionary.json</strong></li>
-  <li><strong>tags.json</strong></li>
-  <li><strong>pages.json</strong></li>
-</ol>
+<div class="list">
+  <ol>
+    <li><strong>dictionary.json</strong></li>
+    <li><strong>tags.json</strong></li>
+    <li><strong>pages.json</strong></li>
+  </ol>
+</div>
+
 
 <p>The moment you create a word, dictionary.json is read and parsed. Every word is is defined by three values</p>
 
-<code> 
+<!-- <code> 
 {
     "sp": "",
     "de": "",
     "ar": "",
     "tag": "rregi"
 }
-</code>
+</code> -->
+
+<pre class="codewrapper">
+  <code id="htmlViewer" style="color:rgb(171, 178, 191); font-weight:400;background-color:rgb(40, 44, 52);background:rgb(40, 44, 52);display:block;padding: .5em;"><span style="color:rgb(171, 178, 191); font-weight:400;">{</span>
+    <span style="color:rgb(209, 154, 102); font-weight:400;">&quot;sp&quot;</span><span style="color:rgb(171, 178, 191); font-weight:400;">:</span> <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;&quot;</span><span style="color:rgb(171, 178, 191); font-weight:400;">,</span>
+    <span style="color:rgb(209, 154, 102); font-weight:400;">&quot;de&quot;</span><span style="color:rgb(171, 178, 191); font-weight:400;">:</span> <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;&quot;</span><span style="color:rgb(171, 178, 191); font-weight:400;">,</span>
+    <span style="color:rgb(209, 154, 102); font-weight:400;">&quot;ar&quot;</span><span style="color:rgb(171, 178, 191); font-weight:400;">:</span> <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;&quot;</span><span style="color:rgb(171, 178, 191); font-weight:400;">,</span>
+    <span style="color:rgb(209, 154, 102); font-weight:400;">&quot;tag&quot;</span><span style="color:rgb(171, 178, 191); font-weight:400;">:</span> <span style="color:rgb(152, 195, 121); font-weight:400;">&quot;rregi&quot;</span>
+<span style="color:rgb(171, 178, 191); font-weight:400;">}</span></code></pre>
 
 <p>sp stands for: <strong>Spanish</strong>, de stands for: <strong>German</strong>, ar stands for <strong>Arabic</strong> and last but not least, the words tag. After adding the new word, the file gets rewritten. This works like this for tags and pages too. Upon creation and saving the same happens for both of them.</p>
 
@@ -70,22 +110,25 @@
 
 <h2>Roadmap</h2>
 
-<ul class="roadmap">
-  <li>Switch to PetiteVUE (reacticity)</li>
-  <li>Switch to Typescript</li>
-  <li>Add Notebooks</li>
-  <li>Fix dumb non-reactivity bugs</li>
-  <li>Add settings menu</li>
-  <li>Add learning tools</li>
-  <li>(maybe) mobile app</li>
-</ul>
+<div id="roadmap">
+  <ul>
+    <li>Switch to PetiteVUE (reacticity)</li>
+    <li>Switch to Typescript</li>
+    <li class="">Add Notebooks</li>
+    <li>Fix dumb non-reactivity bugs</li>
+    <li>Add settings menu</li>
+    <li>Add learning tools</li>
+    <li>(maybe) mobile app</li>
+  </ul>
+</div>
 
-<h2>Conclustion</h2>
+<h2>Conclusion</h2>
 
-AmA is a great tool, and serves it's purpose for those, who need it. I can tell from experience, that keeping a vocabulary book organized it a huge pain. If I ever learn a new language, then I'll DEFINITELY use it, because it encapsulates that feeling of keeping track of vocabulary yourself pretty good, while also making it easier. That's... basically it
+<p>
+  AmA is a great tool, and serves it's purpose for those, who need it. I can tell from experience, that keeping a vocabulary book organized it a huge pain. If I ever learn a new language, then I'll DEFINITELY use it, because it encapsulates that feeling of keeping track of vocabulary yourself pretty good, while also making it easier. That's... basically it
+</p>
 
-<style>
-  .warning {
-    background: red;
-  }
-</style>
+
+<h2>Check out my other projects!</h2>
+
+<footer></footer>

@@ -120,10 +120,19 @@ h1 {
     position: absolute;
     height: 100px;
     bottom: -250px;
-    width: 100%;
+    // width: 100%;
     background: rgb(255, 255, 255);
   
     color: black;
+
+    text-align: justify;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-left: 70px;
+    padding-right: 70px;
   }
   
   &:hover {
