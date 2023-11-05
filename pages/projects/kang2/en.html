@@ -14,6 +14,18 @@
 
 <div id="activity"></div>
 
+<div id="preview-image" @click="imagePreview = false" :style="`
+  transform: scale(${imagePreview ? '1' : '1.1'});
+  opacity: ${imagePreview ? '1' : '0'};
+  pointer-events: ${imagePreview ? 'all' : 'none'};
+  `">
+</div>
+
+<div id="preview-images">
+  <img @click="imagePreview = true" src="pages/projects/kang2/good.png" alt="Menu Screen">
+  <img @click="imagePreview = true" src="pages/projects/kang2/good.png" alt="Gameplay Night">
+  <img @click="imagePreview = true" src="pages/projects/kang2/good.png" alt="Gameplay Classroom">
+</div>
 
 <p>
   Kang2 is a high-level, easy to learn programming language. It combines many loved features of other popular languages, while adding new and exciting ideas for future languages to come. It uses NodeJS and is best used for small terminal applications and to see, how a interpreter works under the hood. It's relatively small size makes it easy to tinker with and make new additions.

@@ -67,22 +67,50 @@
   #preview-images {
     
     padding-top: 50px;
+
+    margin-left: 50px;
+    margin-right: 50px;
+
+    /* width: 80%; */
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    padding-bottom: 10px;
     
     display: flex;
-    justify-content: center;
+    justify-content: safe center;
     gap: 30px;
+
+    overflow-x: scroll;
   }
   
-  #preview-images img {
-    border-radius: 15px;
-    cursor: pointer;
-    aspect-ratio: 16 / 9;
-    height: 200px;
+  #preview-images::-webkit-scrollbar {
+    height: 10px;
+  }
 
+  #preview-images::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  #preview-images img {
+    aspect-ratio: 16 / 9;
+  }
+  
+  #preview-images > * {
+    cursor: pointer;
+    border-radius: 15px;
+    height: 200px;
+    width: auto;
+  
     transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) .4s;
   }
 
   #preview-images img:hover {
+    transform: scale(1.05);
+  }
+
+  #preview-images iframe:hover {
     transform: scale(1.05);
   }
 
@@ -98,12 +126,42 @@
     font-size: 15pt;
   }
 
+  blockquote {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.13);
+    font-weight: bold;
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    border-radius: 10px;
+
+    border-left: 5px solid rgb(36, 17, 143);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    margin-left: 30%;
+    margin-right: 30%;
+  }
+
+  i {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   p {
 
     padding-left: 13% !important;
     padding-right: 13% !important;
 
     max-width: 100% !important;
+
+    width: auto;
+
+    /* display: flex;
+    justify-content: center;
+    flex-direction: column; */
 
 
     /* width: 100%; */
@@ -150,7 +208,36 @@
   }
 
   .list > * {
-    width: 200px;
+    width: auto;
+  }
+
+  pre:has(#htmlViewer) {
+    display: flex;
+    justify-content: center;
+  }
+
+  #htmlViewer {
+    max-width: 800px;
+    
+    width: 100%;
+
+    overflow-x: scroll;
+
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 10px;
+  }
+
+  #htmlViewer::-webkit-scrollbar {
+    height: 10px;
+  }
+
+  #htmlViewer::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  #htmlViewer::-webkit-scrollbar-thumb {
+    background: rgb(14, 10, 63);
   }
 
   h2 {

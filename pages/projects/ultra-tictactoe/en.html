@@ -16,14 +16,25 @@
 <div id="activity"></div>
 
 
+<div id="preview-image" @click="imagePreview = false" :style="`
+  transform: scale(${imagePreview ? '1' : '1.1'});
+  opacity: ${imagePreview ? '1' : '0'};
+  pointer-events: ${imagePreview ? 'all' : 'none'};
+  `">
+</div>
 
+<div id="preview-images">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/yLtZsmzjytA?si=Fxyi705xYXuDF3VV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <img @click="imagePreview = true" src="pages/projects/ultra-tictactoe/menu.gif" alt="Menu Screen">
+  <img @click="imagePreview = true" src="pages/projects/ultra-tictactoe/nightgame.gif" alt="Gameplay Night">
+  <img @click="imagePreview = true" src="pages/projects/ultra-tictactoe/classroomgame.gif" alt="Gameplay Classroom">
+</div>
 
 <!-- <script>hljs.highlightAll()</script> -->
 
 <!-- <h1>Ultra TicTacToe</h1> -->
 
 
-<img src="./uttt/menu.gif" alt="Menu Screen">
 
 <p>
   Ultra Tic-Tac-Toe is a (kind of) fun multiplayer game, that replicates the real life Tic-Tac-Toe spin-off "Super Tic-Tac-Toe". It's like the original pen and paper game with the classic 3x3 field, but you have nine of those.
@@ -33,9 +44,6 @@
   Basically a big Tic-Tac-Toe field with a bunch of smaller Tic-Tac-Toe fields inside each cell.
 </blockquote>
 
-<img src="./uttt/nightgame.gif" alt="Gameplay Night">
-
-<img src="./uttt/classroomgame.gif" alt="Gameplay Classroom">
 
 <h2>
   Game Rules
@@ -53,61 +61,57 @@
   How to play
 </h2>
 
-<ul>
-  <li>
-    Install the game <a href="https://achodev.itch.io/ultra-tictactoe">here</a> on itch.io or directly from GitHub
-  </li>
-  <li>
-    Install RadminVPN or similar software and Launch
-  </li>
-  <li>
-    Connect to the same network with whoever you want to play against
-  </li>
-  <li>
-    If you're the host, start the game, select a name and profile picture and click on <i>'Host'</i>
-  </li>
-  <li>
-    If your enemy is the host, enter their respective IP-Address from RadminVPN and click on <i>'Join'</i>
-  </li>
-</ul>
+<div class="list">
+  <ol>
+    <li>
+      Install the game <a href="https://achodev.itch.io/ultra-tictactoe">here</a> on itch.io or directly from GitHub
+    </li>
+    <li>
+      Install RadminVPN or similar software and Launch
+    </li>
+    <li>
+      Connect to the same network with whoever you want to play against
+    </li>
+    <li>
+      If you're the host, start the game, select a name and profile picture and click on <i>'Host'</i>
+    </li>
+    <li>
+      If your enemy is the host, enter their respective IP-Address from RadminVPN and click on <i>'Join'</i>
+    </li>
+  </ol>
+</div>
+
 
 <h2>
   How it works
 </h2>
 
-<details>
-
-<summary>Click to expand</summary>
-
 <p>
   The Game was made with Flutter, which may seem like a strange choice, if you compare it to libraries, that are purposefully made for Videogames, like [Lumina Engine]('google.com'). Before making this game, I was working on Shop-Up and learning Flutter whilst doing so. One day I heard about Super Tic-Tac-Toe and was instantly fascinated by it. Tic-Tac-Toe has always been a fun, but shallow game for me. Now seeing it with a new layer of depth made me pretty excited, so I tried it in an online whiteboard software and it felt pretty anticlimactic. Then and there, I decided to put Shop-Up on a halt and start this small sideproject for three reasons:
 </p>
 
-<ol>
-  <li>
-    The one I just described
-  </li>
-  <li>
-    I never made a multiplayer game before this
-  </li>
-  <li>
-    I wanted to learn more about Flutter
-  </li>
-</ol>
+<div class="list">
+  <ol>
+    <li>
+      The one I just described
+    </li>
+    <li>
+      I never made a multiplayer game before this
+    </li>
+    <li>
+      I wanted to learn more about Flutter
+    </li>
+  </ol>
+</div>
+
 
 <p>
   In the beginning my estimate was, that this game was going to take about one weekend. This _could_ have been true, if I hadn't had a bunch of Ideas for new features. Also easy to use multiplayer, even on a level as simple as this, was <strong>way</strong> harder than I anticipated. I'll come to, what I mean with "easy to use" a bit later.
 </p>
 
-</details>
-
 <h2>
   How I made it
 </h2>
-
-<details>
-
-<summary>Click to expand</summary>
 
 <p>
   The basic game structure, with the big field was done in a single day. I didn't use a canvas at all, because I thought just using regular widgets would make this process more streamlined and easier, but a bit more cookie-cutter, which is a compromise I was very willing to accept for a small sideproject like this.
@@ -480,7 +484,7 @@
    
            socket.on(<span style="color:rgb(152, 195, 121); font-weight:400;">&#x27;startgame&#x27;</span>, (<span style="color:rgb(198, 120, 221); font-weight:400;">data</span>) {
              <span style="color:rgb(198, 120, 221); font-weight:400;">if</span>(socket == _players[<span style="color:rgb(209, 154, 102); font-weight:400;">0</span>].socket) {io.emit(<span style="color:rgb(152, 195, 121); font-weight:400;">&#x27;hoststartgame&#x27;</span>, <span style="color:rgb(198, 120, 221); font-weight:400;">data</span>);}
-           });
+           }); 
    
            socket.on(<span style="color:rgb(152, 195, 121); font-weight:400;">&#x27;playermove&#x27;</span>, (res) {
              io.emit(<span style="color:rgb(152, 195, 121); font-weight:400;">&#x27;playermove&#x27;</span>, res);
@@ -653,15 +657,15 @@ void checkWinner() {
 
   </code></pre> -->
 
-<p>
+<center> <p>
   After I was done, I made a short youtube video, showing my progress until now.
-</p>
+</p> </center>
 
 <i>
   ultra tictactoe multiplayer test
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/JgWpx-lsXUg?si=V7vGWp7nFc7skJWC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </i>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/JgWpx-lsXUg?si=V7vGWp7nFc7skJWC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <h3>
   Day 3 and onwards
@@ -686,6 +690,5 @@ void checkWinner() {
 </i>
 <img src="uttt/classroom.png" alt="Classroom Map">
 
-</details>
 
 <footer></footer>
