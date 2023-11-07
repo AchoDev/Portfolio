@@ -2,28 +2,32 @@
 <template id="banner-template">
   <div id="container">
   
+    <img id="background" :src="banner" alt="banner">
+
     <h1 id="title">
       {{title}}
     </h1>
   
     <div id="bar">
-      <a id="download" :href="download" target="_blank">
+      <a id="download" :href="download" target="_blank" v-if="download != ''">
+
         <img src="pages/projects/download.png" alt="Download">
         DOWNLOAD
-      </a> 
-      <a id="github" :href="github" target="_blank">
+      </a>
+
+      <a id="github" :href="github" target="_blank" v-if="github != ''">
         <img src="pages/projects/github.png" alt="Download">
         Github Repo
       </a>
       <!-- <button id="web"></button> -->
   
-      <div id="created-on">
+      <div id="created-on" v-if="createdOn != ''">
         Created on
         <span class="date">
           {{createdOn}}
         </span>
       </div>
-      <div id="published-on">
+      <div id="published-on" v-if="publishedOn != ''">
         Published on
         <span class="date">
           {{publishedOn}}
@@ -34,6 +38,7 @@
 </template>
 
 <style>
+
 
   #preview-image {
     position: fixed;
@@ -124,6 +129,61 @@
     border-radius: 10px;
     border: 2px dashed yellow;
     font-size: 15pt;
+  }
+
+  .secret {
+    background: gray;
+    
+    border: 2px solid black;
+  }
+
+  details {
+    text-align: left;
+    width: auto;
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+
+  details summary {
+    font-size: 15pt;
+    font-weight: bold;
+    background: rgba(0, 119, 255, 0.116);
+    border-radius: 15px;
+
+    padding: 2px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    
+    cursor: pointer;
+  }
+  
+  details blockquote {
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  details hr {
+    border-color: rgba(255, 255, 255, 0.411);
+  }
+
+  code {
+    padding: 2px;
+    background: rgba(43, 43, 43, 0.877);
+    border-radius: 4px;
+    
+  }
+
+  #content a {
+    text-decoration: none;
+    color: rgb(65, 195, 255);
+    border-radius: 6px;
+    transition: ease-out .05s;
+  }
+
+  #content a:hover {
+    color: white;
+    /* background: rgb(35, 111, 250); */
+    text-decoration: underline;
   }
 
   blockquote {
@@ -289,11 +349,27 @@
 
   #container {
     width: 100%;
-    height: 400px;
+    height: 500px;
     background: red;
+
+    background-attachment:local;
+    background-position: center;
+
     position: relative;
 
-    overflow: visible;
+    overflow: hidden;
+  }
+
+  #background {
+    position: absolute;
+
+
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+
+    overflow: hidden;
   }
 
   #title {
@@ -304,6 +380,13 @@
     text-align: left;
     z-index: 1;
     margin: 0;
+
+    background: rgba(0, 0, 0, 0.288);
+    width: 200px;
+    text-align: center;
+
+    padding: 5px;
+    border-radius: 10px;
   }
 
   #bar {
@@ -372,6 +455,91 @@
 
   #bar #github {
     background: black;
+  }
+
+  
+  @media only screen and (max-width: 700px) {
+    #title {
+      bottom: 300px !important;
+      color: white;
+      background: rgba(0, 0, 0, 0.315);
+      border-radius: 15px;
+      width: auto;
+      padding: 20px;
+    }
+    
+    blockquote {
+      margin: 0 !important;
+      margin-left: 10px !important;
+      margin-right: 10px !important;
+    }
+
+    #preview-images {
+      padding: 0;
+      margin: 0;
+
+      margin-top: 50px;
+      padding-bottom: 10px;
+    }
+
+
+
+    p {
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
+
+    #roadmap {
+      font-size: 14pt !important;
+    }
+
+    footer > div > div a{
+      width: 300px !important;
+    }
+
+    .warning {
+      /* width: 90% !important; */
+      padding: 0 !important;
+      margin: 0 !important;
+
+      margin-top: 30px !important;
+      margin-left: 30px !important;
+      margin-right: 30px !important;
+    }
+
+    #bar {
+      color: white;
+      background: rgba(0, 0, 0, 0.438);
+      flex-direction: column;
+      align-items: start !important;
+      justify-content: space-evenly;
+      gap: 5px !important;
+      height: 200px !important;
+
+      width: auto;
+      border-radius: 20px;
+      margin: 10px;
+      
+    }
+
+    details {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    #htmlViewer {
+      margin: 0;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    iframe {
+      width: 90%;
+    }
+
+    .warning {
+      height: auto;
+    }
   }
 
 </style>

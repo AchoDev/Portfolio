@@ -4,12 +4,19 @@
 
 <div id="banner"></div>
 
+<style>
+  #title, #bar {
+    color: white !important;
+  }
+</style>
+
 <div v-scope="Banner({
   title: 'Kang2',
-  download: 'some link',
-  github: 'git link',
-  createdOn: 'one year ago I think?',
-  publishedOn: 'yes'
+  banner: 'kang2',
+  download: '',
+  github: 'https://github.com/AchoDev/Kang2',
+  createdOn: '03 March, 2022',
+  publishedOn: '29 January, 2023',
 })"></div>
 
 <div id="activity"></div>
@@ -22,9 +29,9 @@
 </div>
 
 <div id="preview-images">
-  <img @click="imagePreview = true" src="pages/projects/kang2/good.png" alt="Menu Screen">
+  <!-- <img @click="imagePreview = true" src="pages/projects/kang2/good.png" alt="Menu Screen">
   <img @click="imagePreview = true" src="pages/projects/kang2/good.png" alt="Gameplay Night">
-  <img @click="imagePreview = true" src="pages/projects/kang2/good.png" alt="Gameplay Classroom">
+  <img @click="imagePreview = true" src="pages/projects/kang2/good.png" alt="Gameplay Classroom"> -->
 </div>
 
 <p>
@@ -303,9 +310,9 @@ The <code>loop</code> keyword is needed to use <strong>loops</strong>
 
 <h2>Why I made it</h2>
 
-<p>I was initially motivated to create a programming language after I saw the <a href="https://github.com/Spu7Nix/SPWN-language">SPWN-language</a>, made by Spu7Nix. I didn't even look up, how programming languages work at all, instead I just went head-first into my first an... attempt. Since I didn't have any Idea what I was doing and I was using Java for some misterious reason, It failed miserably.</p> 
+<p>I was initially motivated to create a programming language after I saw the <a href="https://github.com/Spu7Nix/SPWN-language" target="_blank">SPWN-language</a>, made by Spu7Nix. I didn't even look up, how programming languages work at all, instead I just went head-first into my first an... attempt. Since I didn't have any Idea what I was doing and I was using Java for some misterious reason, It failed miserably.</p> 
   
-<p>A couple months later, I saw <a href="ADD LINK HERE">this</a> Video by Sebastian Lague, where he created a small language too. This got my motivation up again, which lead me to look up how a programming language is structured. I followed a simple tutorial in the beginning, to get the basics.</p>
+<p>A couple months later, I saw <a href="https://www.youtube.com/watch?v=dY6jR52fFWo&ab_channel=SebastianLague" target="_blank">this</a> Video by Sebastian Lague, where he created a small language too. This got my motivation up again, which lead me to look up how a programming language is structured. I followed a simple tutorial in the beginning, to get the basics.</p>
   
 <p>What I needed to know was, how the abstract syntax tree works and how traverse one with an interpreter. Compilation was one step too far for me, since I didn't aim for a quote unquote "professional" or very serious language. As soon as I understood the most important, foundational parts of an interpreter, I diverged from that tutorial, to go on my own. After a lot of brutal months, hard work and dedication, I had somewhat of a finished product. It's still very buggy, but I'll definitely come back one day and fix those and add certain features. It took my half a year in the end to get that and I am very proud. Maybe one day it'll be of use to anybody.</p>
 

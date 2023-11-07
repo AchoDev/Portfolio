@@ -25,7 +25,7 @@ const routes = {
         page: 'pages/projects/ultra-tictactoe/en.html'
     },
     '/kang2': {
-        title: 'Ultra TicTacToe',
+        title: 'Kang2',
         page: 'pages/projects/kang2/en.html'
     },
     '/ama': {
@@ -33,8 +33,28 @@ const routes = {
         page: 'pages/projects/ama/en.html'
     },
     '/yo-masta-nag': {
-        title: 'AmA',
+        title: 'Yo-Masta-Nag',
         page: 'pages/projects/yo-masta-nag/en.html'
+    },
+    '/youranimelist': {
+        title: 'YOURAnimeList',
+        page: 'pages/projects/youranimelist/en.html'
+    },
+    '/am-launcher': {
+        title: 'AchoMatico-Launcher',
+        page: 'pages/projects/am-launcher/en.html'
+    },
+    '/banana-world': {
+        title: 'Banana World',
+        page: 'pages/projects/banana-world/en.html'
+    },
+    '/lumina': {
+        title: 'Lumina Engine',
+        page: 'pages/projects/lumina/en.html'
+    },
+    '/secret': {
+        title: 'Secret',
+        page: 'pages/projects/secret/en.html'
     },
     '/contact': {
         title: 'Contact',
@@ -128,7 +148,6 @@ function parseHTML(input) {
         newScript.type = element.type;
         newScript.defer = element.defer;
         parsedHTML.insertBefore(newScript, parsedHTML.firstChild);
-        console.log("cock");
         console.log(element);
     }));
     return parsedHTML;

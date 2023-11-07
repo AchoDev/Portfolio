@@ -1,0 +1,33 @@
+
+<script type="module" src="pages/projects/project-page-default.js"></script>
+
+<div id="banner"></div>
+
+<div v-scope="Banner({
+  title: 'Banana World',
+  banner: 'banana-world',
+  download: '',
+  github: '',
+  createdOn: 'One particular day',
+  publishedOn: 'Eventually'
+})"></div>
+
+<div id="activity"></div>
+
+<div id="preview-image" @click="imagePreview = false" :style="`
+  transform: scale(${imagePreview ? '1' : '1.1'});
+  opacity: ${imagePreview ? '1' : '0'};
+  pointer-events: ${imagePreview ? 'all' : 'none'};
+  `">
+</div>
+
+<div id="preview-images">
+</div>
+
+<blockquote class="warning secret">
+    This project is currently a secret! Stay tuned for updates!  <!-- See if there are any updates in the <button>info</button> section -->
+</blockquote>
+
+<h2>Check out my other projects!</h2>
+
+<footer></footer>

@@ -163,17 +163,26 @@ function animate() {
 animate();
 
 window.addEventListener('mousedown', () => {
+  console.log("aaa")
   mouseclicked = true
 });
 window.addEventListener('mouseup', () => {
   mouseclicked = false
 });
 
+// window.addEventListener('touchmove', function(e) {
+  
+//   e.preventDefault();
+// }, {passive: false});
+
 const moveAmount: number = 0.001
 const smallMoveAmount: number = 0.0001
 
 window.addEventListener('mousemove', (e) => {
   if(!mouseclicked) {
+
+    
+
     camera.rotation.y -= e.movementX * smallMoveAmount
     camera.rotation.x -= e.movementY * smallMoveAmount * 2
 

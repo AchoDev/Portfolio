@@ -14,6 +14,7 @@ function Banner(props) {
   return {
     $template: '#banner-template',
     title: props.title,
+    banner: `pages/projects/${props.banner}/banner.png`,
     download: props.download,
     github: props.github,
     createdOn: props.createdOn,

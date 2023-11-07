@@ -109,11 +109,15 @@ function animate() {
 }
 animate();
 window.addEventListener('mousedown', () => {
+    console.log("aaa");
     mouseclicked = true;
 });
 window.addEventListener('mouseup', () => {
     mouseclicked = false;
 });
+// window.addEventListener('touchmove', function(e) {
+//   e.preventDefault();
+// }, {passive: false});
 const moveAmount = 0.001;
 const smallMoveAmount = 0.0001;
 window.addEventListener('mousemove', (e) => {

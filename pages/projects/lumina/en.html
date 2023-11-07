@@ -5,36 +5,41 @@
 
 <div v-scope="Banner({
   title: 'Lumina Engine',
-  download: 'some link',
-  github: 'https://github.com/AchoDev/hehehehaw',
-  createdOn: 'i dunnno',
+  banner: 'lumina',
+  download: '',
+  github: 'https://github.com/AchoDev/Lumina-Engine',
+  createdOn: '30 January, 2023',
   publishedOn: 'Still in development'
 })"></div>
 
 <div id="activity"></div>
 
-<blockquote class="warning">
-  This Project is still under development!
-</blockquote> 
 
 <div id="preview-image" @click="imagePreview = false" :style="`
-  transform: scale(${imagePreview ? '1' : '1.1'});
-  opacity: ${imagePreview ? '1' : '0'};
-  pointer-events: ${imagePreview ? 'all' : 'none'};
-  `">
+transform: scale(${imagePreview ? '1' : '1.1'});
+opacity: ${imagePreview ? '1' : '0'};
+pointer-events: ${imagePreview ? 'all' : 'none'};
+`">
 </div>
 
 <div id="preview-images">
+  <!-- <img @click="imagePreview = true" src="pages/projects/ama/good.png" alt="good">
   <img @click="imagePreview = true" src="pages/projects/ama/good.png" alt="good">
-  <img @click="imagePreview = true" src="pages/projects/ama/good.png" alt="good">
-  <img @click="imagePreview = true" src="pages/projects/ama/good.png" alt="good">
+  <img @click="imagePreview = true" src="pages/projects/ama/good.png" alt="good"> -->
 </div>
+
+<blockquote class="warning secret">
+  This project is not ready to be presented yet! Stay tuned for updates!
+</blockquote>
+
 
 <h2>Description</h2>
 
 <p>
   Lumina Engine is a game engine that’s built on top of the PyGame. It’s specifically made like the Unity Engine, which makes Game Development as a whole a bit more restrictive, but way simpler.
 </p>
+
+<h2>Check out my other projects!</h2>
 
 
 <footer></footer>

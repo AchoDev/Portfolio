@@ -11,6 +11,7 @@
         img: `pages/about/images/${props.img}`,
         color: props.color,
         projects: props.projects,
+        text: props.text ?? 'white',
       }
     }
 
@@ -66,13 +67,14 @@
       bw: {
         name: 'Banana World',
         color: 'rgb(255, 226, 61)',
-        path: 'bw'
+        path: 'banana-world',
+        text: 'black',
       },
 
       portfolio: {
         name: 'This website',
         color: 'linear-gradient( 100deg, #21398f, #6c2a82, #7d1414 )',
-        path: '/'
+        path: 'portfolio'
       }
     }
 
@@ -86,12 +88,13 @@
 
   <h1>About Me</h1>
 
-  <h3>Hello!</h3>
+  <h2>Hello!</h2>
 
-  <p>I am Ahmed Asi, also known as AchoDev. I'm passionate about many areas of programming. I express my passion through all my projects that I've spent countless hours meticulously and carefully crafting.</p>
+  <p>I am <span id="name">Ahmed Asi</span>, also known as AchoDev. I'm passionate about many areas of programming. I express my passion through all my projects that I've spent countless hours meticulously and carefully crafting.</p>
 
   <p>I have a strong educational foundation in my field, as I study computer science at BHH in Hamburg in parallel to training to become a software developer one day. I'm very well versed in a range of technologies, tools and programming languages.</p>
 
+  <hr>
 
   <h2>Skills</h2>
 
@@ -102,19 +105,19 @@
 
         <div class="top">
           <img :src="img" alt="logo image" srcset="">
-          <span> {{name}} </span>
+          <span :style="`color: ${text}`"> {{name}} </span>
         </div>
 
         <div class="used-in" v-if="projects.length !== 0">
-          <span>Used in:</span>
+          <span :style="`color: ${text}`">Used in:</span>
 
           <div class="project-wrapper">
 
             <div v-for="project in projects">
-              <a class="project-reference" :href="project.path">
+              <a class="project-reference" :href="project.path != 'portfolio' ? project.path : '/'">
                 <div :style="`background: ${project.color}`">
-                  <img :src="`pages/about/projects/${project.path}.png`">
-                  <span> {{project.name}} </span>
+                  <img :src="`pages/projects/${project.path}/small.png`">
+                  <span :style="'color: '  + project.text ?? 'white'"> {{project.name}} </span>
                 </div>
               </a>
             </div>
@@ -126,10 +129,60 @@
     </template>
 
     <style>
+
+      hr {
+        width: 40%;
+        border-width: 0.5px;
+        border-color: rgba(194, 152, 152, 0.712);
+      }
+
+      #name {
+        font-size: 15pt;
+        background: linear-gradient(70deg, rgb(139, 180, 255), rgb(255, 54, 54));
+        color: white;
+        padding: 3px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: default;
+
+        display: inline-block;
+
+        transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 1s;
+      }
+
+      #name:hover {
+        transform: scale(2) rotate(360deg);
+        box-shadow: rgba(255, 65, 65, 0.35) 0px 5px 15px;
+      }
+
       #skills {
         display: grid;
         gap: 20px;
         grid-template-columns: repeat(3, 1fr);  
+      }
+
+      @media only screen and (max-width: 1200px) {
+        #skills {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media only screen and (max-width: 725px) {
+        #skills {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 90%;
+        }
+
+        p {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+        }
+
+        .skill {
+          /* width: 100% !important; */
+          max-width: 100%;
+        }
       }
 
     
@@ -137,11 +190,14 @@
         display: flex;
         flex-shrink: 0;
         justify-content: center;
+        align-items: center;
         color: white;
         text-decoration: none !important;
         border-radius: 10px;
 
         min-width: 100px;
+
+        gap: 5px;
 
         padding-left: 5px;
         padding-right: 5px;
@@ -151,12 +207,31 @@
         text-decoration: none;
         width: 100%;
 
+        display: inline-block;
+
+        transition: ease-out .1s;
+
         /* margin-left: 30px;
         margin-right: 30px; */
       }
 
+      .project-reference:first-child {
+        padding-left: 3.5px;
+      }
+
+      .project-reference:hover {
+        transform: scale(1.05);
+      }
+
       .project-reference span {
         text-wrap: nowrap;
+      }
+
+      .project-reference img {
+        width: 20px;
+        height: 80%;
+
+        border-radius: 4px;
       }
 
       .skill {
@@ -240,7 +315,7 @@
       img: 'flutter.png',
       color: '#5fc9f8',
       projects: [
-        uttt, shopup
+        uttt
       ]
     })"></div>
 
@@ -249,7 +324,7 @@
       img: 'dart.png',
       color: '#0079b3',
       projects: [
-        uttt, shopup
+        uttt
       ]
     })"></div>
 
@@ -259,7 +334,8 @@
       color: 'white',
       projects: [
         uttt
-      ]
+      ],
+      text: 'black',
     })"></div>
 
     <div v-scope="Skill({
@@ -268,7 +344,8 @@
       color: '#f0dc4e',
       projects: [
         kang2, ama, yal, amlauncher, 
-      ]
+      ],
+      text: 'black',
     })"></div>
 
     <div v-scope="Skill({
@@ -295,7 +372,8 @@
       color: 'white',
       projects: [
         portfolio
-      ]
+      ],
+      text: 'black',
     })"></div>
 
     <div v-scope="Skill({
@@ -382,8 +460,27 @@
 
   <!-- <p>What sets me apart is my relentless pursuit of excellence, attention to detail, and a dedication to continually expand my knowledge. I'm not just a programmer; I'm a problem solver, a lifelong learner, and a team player. ändern noch weil cgpt kopie bhd</p> -->
 
-  <p>Outside of coding, I have other hobbies too. I love reading. I read every day, as much as I can, with lots of different genres that entice me, especially thriller and nonfiction. Playing piano is another hobby of mine. To have an instrument and learning to play music on it is something very important to me. Even if I didn't have any fun, I'd do so, but I love the piano aswell. Like reading, it's something I practice each and every day without fail.</p>
+  <br>
+  <br>
 
-  
+  <hr>
+
+  <h2>Hobbies</h2>
+
+  <p>Outside of coding, I have other hobbies too. I love reading. I read every day, as much as I can, with lots of different genres that entice me, especially thriller and nonfiction. Playing piano is another hobby of mine. To have an instrument and learning to play music on it is something very important to me. Even if I didn't have any fun, I'd do so, but I love the piano aswell. Like reading, it's something I practice each and every day.</p>
+
+  <hr>
+
+  <h2>Goal</h2>
+
+  <p>My goal with all my programs and projects is to create something that holds a special value to somebody. I'd love to have something, where I know that people us it and like it. Striving for this future is what keeps me going and why I excell in my field. I love creating and crafting, having the thought of something that would be nice and useful and going on to make that. Most of my projects are products of something that would be nice to have for me.</p>
+
+  <hr>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 
 </div>
