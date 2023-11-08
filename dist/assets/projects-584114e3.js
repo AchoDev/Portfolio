@@ -1,0 +1,1 @@
+import"./modulepreload-polyfill-3cfb730f.js";import{createApp as e}from"https://unpkg.com/petite-vue?module";function a(t){return{$template:"#project-template",name:t.name,desc:t.desc,imgsrc:t.path!=""?`./pages/projects/${t.path}/main.png`:"",color:t.color,text:t.text||"white",path:t.path}}e({Project:a}).mount();

@@ -1,0 +1,228 @@
+<script type="module" crossorigin src="/assets/home-944bb97d.js"></script>
+<link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-3cfb730f.js">
+
+
+<div id="home" class="page">
+
+  
+  <!-- <script type="module" src="pages/home/debugmoveobj.js"></script> -->
+  
+  
+
+
+  <div id="control" v-if="debugControls === true">
+    <div>
+      <button id="frontbutton"> &HorizontalLine; </button>
+      <button id="leftbutton"> &leftarrow; </button>
+      <button id="upbutton"> &uparrow; </button>
+      <button id="downbutton"> &downarrow; </button>
+      <button id="rightbutton"> &rightarrow; </button>
+      <button id="backbutton"> &sdot; </button>
+  
+  
+      <button id="printbutton"> print </button>
+      <button id="togglebutton"> toggle </button>
+      <button id="toggledebugbutton"> toggle cube </button>
+    </div>
+  
+    <div>
+      <button id="turnfrontbutton"> front </button>
+      <button id="turnleftbutton"> &circlearrowleft; </button>
+      <button id="turnupbutton"> &UpArrowBar; </button>
+      <button id="turndownbutton"> &DownArrowBar; </button>
+      <button id="turnrightbutton"> &circlearrowright; </button>
+      <button id="turnbackbutton"> back </button>
+    </div>
+
+    <div>
+      <button id="scalexbutton"> &leftrightarrow; </button>
+      <button id="minusscalexbutton"> &rightarrow; &leftarrow; </button>
+      <button id="scaleybutton"> &updownarrow; </button>
+      <button id="minusscaleybutton"> &DownArrowUpArrow; </button>
+      <button id="scalezbutton"> &CircleDot; </button>
+      <button id="minusscalezbutton"> &sdot; </button>
+    </div>
+  
+    <div>
+      <input type="range" min="10" max="100" value="10" id="debugrange">
+    </div>
+  
+    <div>
+      <input type="range" min="1" max="10000" value="10" id="debugintensity">
+    </div>
+  </div>
+
+  
+  <!-- <div id="menu">
+    <button @click="debugControls = !debugControls"> Toggle debug controls </button>
+    <button> Download .glb Model </button>
+    <button> Hide Camera Controls </button>
+
+  </div> -->
+  
+  <div id="information">
+    <span>Drag to move the camera around</span>
+  </div>
+
+  <div id="movement">
+
+
+    <button>
+      <img src="pages/home/arrow.png">
+    </button>
+    
+    <button>
+      <img src="pages/home/arrow.png">
+    </button>
+
+    <button>
+      <div id="circle">&nbsp;</div>
+    </button>
+    
+    <button>
+      <img src="pages/home/arrow.png">
+    </button>
+    
+    <button>
+      <img src="pages/home/arrow.png">
+    </button>
+
+    <button>
+      <img src="pages/home/frontarrow.png">
+    </button>
+
+    <button>
+      <img src="pages/home/backarrow.png">
+    </button>
+  </div>
+</div>
+
+<style>
+  #control {
+    position: absolute;
+    display: flex;
+    flex-direction: column-reverse;
+    bottom: 0;
+    align-items: center;
+    gap: 10px;
+
+    display: none;
+  }
+
+  #information {
+    position: absolute;
+    bottom: 0;
+
+    color: rgba(255, 255, 255, 0.31);
+  }
+
+  #menu {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #movement {
+    position: absolute;
+    height: 130px;
+    width: 130px;
+
+    bottom: 10px;
+    left: 10px;
+    /* background: white; */
+  }
+
+  #movement button:nth-child(1) {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(-90deg);
+  }
+  #movement button:nth-child(2) {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%) rotate(180deg);
+  }
+  #movement button:nth-child(5) {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg);
+  }
+  #movement button:nth-child(3) {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  #movement button:nth-child(4) {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  #movement button:nth-child(6) {
+    right: 0;
+    top: 0;
+    /* transform: translateY(-50%); */
+  }
+
+  #movement button:nth-child(7) {
+    left: 0;
+    top: 0;
+    /* transform: translateY(-50%); */
+  }
+
+  #movement button {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+
+    font-size: 30pt;
+
+    background: rgba(255, 255, 255, 0.173);
+
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: ease-out .1s;
+
+    user-select: none;
+  }
+
+  #movement button:hover {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.418);
+  }
+
+  #movement button:active {
+    width: 37px;
+    height: 37px;
+    background: rgba(112, 112, 112, 0.608);
+  }
+
+  #movement button:hover #circle {
+    background: rgb(0, 0, 0);
+  }
+
+  #movement #circle {
+    width: 85%;
+    height: 85%;
+    border-radius: 100%;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.566);
+  }
+
+  #movement button img {
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+  }
+
+
+</style>

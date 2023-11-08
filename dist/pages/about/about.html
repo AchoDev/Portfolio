@@ -1,0 +1,405 @@
+<script type="module" crossorigin src="/assets/about-cecd6ea0.js"></script>
+<link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-3cfb730f.js">
+
+<div id="about" class ="page">
+
+  
+
+  <h1>About Me</h1>
+
+  <h2>Hello!</h2>
+
+  <p>I am <span id="name">Ahmed Asi</span>, also known as AchoDev. I'm passionate about many areas of programming. I express my passion through all my projects that I've spent countless hours meticulously and carefully crafting.</p>
+
+  <p>I have a strong educational foundation in my field, as I study computer science at BHH in Hamburg in parallel to training to become a software developer one day. I'm very well versed in a range of technologies, tools and programming languages.</p>
+
+  <hr>
+
+  <h2>Skills</h2>
+
+  <div id="skills">
+
+    <template id="skills-template">
+      <div class="skill" :style="`background: ${color}`">
+
+        <div class="top">
+          <img :src="img" alt="logo image" srcset="">
+          <span :style="`color: ${text}`"> {{name}} </span>
+        </div>
+
+        <div class="used-in" v-if="projects.length !== 0">
+          <span :style="`color: ${text}`">Used in:</span>
+
+          <div class="project-wrapper">
+
+            <div v-for="project in projects">
+              <a class="project-reference" :href="project.path != 'portfolio' ? project.path : '/'">
+                <div :style="`background: ${project.color}`">
+                  <img :src="`pages/projects/${project.path}/small.png`">
+                  <span :style="'color: '  + project.text ?? 'white'"> {{project.name}} </span>
+                </div>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </template>
+
+    <style>
+
+      hr {
+        width: 40%;
+        border-width: 0.5px;
+        border-color: rgba(194, 152, 152, 0.712);
+      }
+
+      #name {
+        font-size: 15pt;
+        background: linear-gradient(70deg, rgb(139, 180, 255), rgb(255, 54, 54));
+        color: white;
+        padding: 3px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: default;
+
+        display: inline-block;
+
+        transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 1s;
+      }
+
+      #name:hover {
+        transform: scale(2) rotate(360deg);
+        box-shadow: rgba(255, 65, 65, 0.35) 0px 5px 15px;
+      }
+
+      #skills {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(3, 1fr);  
+      }
+
+      @media only screen and (max-width: 1200px) {
+        #skills {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media only screen and (max-width: 725px) {
+        #skills {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 90%;
+        }
+
+        p {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+        }
+
+        .skill {
+          /* width: 100% !important; */
+          max-width: 100%;
+        }
+      }
+
+    
+      .project-reference div {
+        display: flex;
+        flex-shrink: 0;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-decoration: none !important;
+        border-radius: 10px;
+
+        min-width: 100px;
+
+        gap: 5px;
+
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      .project-reference {
+        text-decoration: none;
+        width: 100%;
+
+        display: inline-block;
+
+        transition: ease-out .1s;
+
+        /* margin-left: 30px;
+        margin-right: 30px; */
+      }
+
+      .project-reference:first-child {
+        padding-left: 3.5px;
+      }
+
+      .project-reference:hover {
+        transform: scale(1.05);
+      }
+
+      .project-reference span {
+        text-wrap: nowrap;
+      }
+
+      .project-reference img {
+        width: 20px;
+        height: 80%;
+
+        border-radius: 4px;
+      }
+
+      .skill {
+        width: 300px;
+        min-height: 70;
+
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        gap: 10px;
+
+        padding: 10px;
+
+        border-radius: 15px;
+
+        transition: ease-out .1s;
+      }
+
+      .skill:hover {
+        transform: scale(1.02);
+        box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+      }
+
+      .top {
+        display: flex;
+        height: 100%;
+      }
+
+      .top span {
+        font-size: 20pt;
+        width: 100%;
+        text-align: center;
+      }
+
+      .top img {
+        width: auto;
+        height: auto;
+
+        max-width: 40px;
+        max-height: 40px;
+
+        border-radius: 5px;
+
+        filter: drop-shadow(0 0 0.75rem black);
+      }
+
+      .project-wrapper{
+        display: flex;
+        gap: 10px;
+        overflow: scroll;
+        flex-shrink: 0;
+        padding-bottom: 15px;
+      }
+
+      .project-wrapper::-webkit-scrollbar {
+        height: 7px;
+      }
+
+      .project-wrapper::-webkit-scrollbar-track {
+        background: none;
+      }
+
+      .project-wrapper::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.486);
+      }
+
+      .project-wrapper::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.836);
+      }
+
+      .project-wrapper::-webkit-scrollbar-corner {
+        display: none;
+      }
+
+    </style>
+
+    <div v-scope="Skill({
+      name: 'Flutter',
+      img: 'flutter.png',
+      color: '#5fc9f8',
+      projects: [
+        uttt
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'Dart',
+      img: 'dart.png',
+      color: '#0079b3',
+      projects: [
+        uttt
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'SocketIO',
+      img: 'socketio.png',
+      color: 'white',
+      projects: [
+        uttt
+      ],
+      text: 'black',
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'JavaScript',
+      img: 'js.png',
+      color: '#f0dc4e',
+      projects: [
+        kang2, ama, yal, amlauncher, 
+      ],
+      text: 'black',
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'TypeScript',
+      img: 'ts.png',
+      color: '#2d79c7',
+      projects: [
+        amlauncher, portfolio
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'MongoDB',
+      img: 'mongodb.png',
+      color: '#4eaa40',
+      projects: [
+        yal
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'ThreeJS',
+      img: 'threejs.png',
+      color: 'white',
+      projects: [
+        portfolio
+      ],
+      text: 'black',
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'ElectronJS',
+      img: 'electron.png',
+      color: '#272a37',
+      projects: [
+        amlauncher, yal, ama
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'VueJS',
+      img: 'vue.png',
+      color: '#3fb984',
+      projects: [
+        portfolio
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'Python',
+      img: 'python.png',
+      color: '#3474a4',
+      projects: [
+        lumina, ymn
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'Unity-Engine',
+      img: 'unity.png',
+      color: 'black',
+      projects: [
+        bw
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'C#',
+      img: 'cs.png',
+      color: '#a27add',
+      projects: [
+        bw
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'Docker',
+      img: 'docker.png',
+      color: '#099cec',
+      projects: [
+        bw
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'Rust',
+      img: 'rust.png',
+      color: '#f74b00',
+      projects: [
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'C',
+      img: 'c.png',
+      color: '#649ad2',
+      projects: [
+      ]
+    })"></div>
+
+    <div v-scope="Skill({
+      name: 'C++',
+      img: 'cpp.png',
+      color: '#649ad2',
+      projects: [
+      ]
+    })"></div>
+  
+  </div>
+
+  <!-- <p>I already knew years ago, that will become a software developer. Before even writing a single line of code or knowing anything about the most abundant languages and-or tools used, I felt a burning desire to write something special. So one day I found out about :: Scratch. After a bit of playing around, I fell in love with it. Since Scratch has a very gentle learning curve, it never felt hard to make anything. After being satisfied with the amount of theoretical knowledge I was able to aquire from playing around, I began my first real Project. I was basically a copy of a popular Indie Game. After a couple of stressful weeks, I finished the game with only a day left to spare, because the game was featured on an open house day at my school.</p> -->
+
+  <!-- <p>What sets me apart is my relentless pursuit of excellence, attention to detail, and a dedication to continually expand my knowledge. I'm not just a programmer; I'm a problem solver, a lifelong learner, and a team player. ändern noch weil cgpt kopie bhd</p> -->
+
+  <br>
+  <br>
+
+  <hr>
+
+  <h2>Hobbies</h2>
+
+  <p>Outside of coding, I have other hobbies too. I love reading. I read every day, as much as I can, with lots of different genres that entice me, especially thriller and nonfiction. Playing piano is another hobby of mine. To have an instrument and learning to play music on it is something very important to me. Even if I didn't have any fun, I'd do so, but I love the piano aswell. Like reading, it's something I practice each and every day.</p>
+
+  <hr>
+
+  <h2>Goal</h2>
+
+  <p>My goal with all my programs and projects is to create something that holds a special value to somebody. I'd love to have something, where I know that people us it and like it. Striving for this future is what keeps me going and why I excell in my field. I love creating and crafting, having the thought of something that would be nice and useful and going on to make that. Most of my projects are products of something that would be nice to have for me.</p>
+
+  <hr>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+</div>
